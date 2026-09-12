@@ -78,6 +78,7 @@ jobs:
       - name: Create and verify archive refs
         env:
           VERSION: ${{ steps.version.outputs.version }}
+          UWU_RELEASE_TOKEN: ${{ secrets.UWU_RELEASE_TOKEN }}
         run: |
           python3 tools/archive_refs.py \
             --manifest "manifest/${VERSION}.xml" \

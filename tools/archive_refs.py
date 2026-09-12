@@ -4,9 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import json
+import os
 from pathlib import Path
-import subprocess
 import sys
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote, urlparse
+from urllib.request import Request, urlopen
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -17,36 +21,129 @@ else:
     from .version_lib import is_sha1, parse_version
 
 
-def _run(command: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:
+def _github_repository(repo_url: str) -> tuple[str, str]:
+    parsed = urlparse(repo_url)
+    if parsed.scheme != "https" or parsed.hostname != "github.com":
+        raise ValueError(f"archive API only supports github.com repositories: {repo_url}")
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) != 2:
+        raise ValueError(f"invalid GitHub repository URL: {repo_url}")
+    return parts[0], parts[1].removesuffix(".git")
+
+
+def _api_url(api_url: str, owner: str, repository: str, suffix: str) -> str:
+    return (
+        f"{api_url.rstrip('/')}/repos/{quote(owner, safe='')}/"
+        f"{quote(repository, safe='')}/{suffix}"
+    )
+
+
+def _api_request(
+    method: str,
+    url: str,
+    *,
+    token: str,
+    timeout: int,
+    payload: dict[str, str] | None = None,
+    not_found_ok: bool = False,
+) -> dict[str, object] | None:
+    body = json.dumps(payload).encode("utf-8") if payload is not None else None
+    request = Request(
+        url,
+        data=body,
+        method=method,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "User-Agent": "uwuAOSP-release-bot",
+            "X-GitHub-Api-Version": "2022-11-28",
+            **({"Content-Type": "application/json"} if payload is not None else {}),
+        },
+    )
     try:
-        return subprocess.run(
-            command,
-            check=False,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-        )
-    except subprocess.TimeoutExpired as error:
-        raise RuntimeError(f"command timed out after {timeout}s: {' '.join(command)}") from error
+        with urlopen(request, timeout=timeout) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        if error.code == 404 and not_found_ok:
+            return None
+        try:
+            detail = error.read().decode("utf-8")
+        except OSError:
+            detail = error.reason
+        raise RuntimeError(f"GitHub API request failed ({error.code}): {detail}") from error
+    except URLError as error:
+        raise RuntimeError(f"GitHub API request failed: {error.reason}") from error
 
 
-def _existing_ref(repo_url: str, ref: str, *, timeout: int) -> str | None:
-    result = _run(["git", "ls-remote", "--refs", repo_url, ref], timeout=timeout)
-    if result.returncode != 0:
-        detail = result.stderr.strip() or f"exit status {result.returncode}"
-        raise RuntimeError(f"unable to query {repo_url} {ref}: {detail}")
-    matches = [
-        fields[0]
-        for line in result.stdout.splitlines()
-        if len(fields := line.split()) == 2 and fields[1] == ref
-    ]
+def _existing_ref(
+    owner: str,
+    repository: str,
+    ref: str,
+    *,
+    api_url: str,
+    token: str,
+    timeout: int,
+) -> str | None:
+    # GitHub's single-ref endpoint only supports heads and tags. Matching refs
+    # also supports custom namespaces such as refs/uwu/archive/.
+    lookup = ref.removeprefix("refs/")
+    url = _api_url(api_url, owner, repository, f"git/matching-refs/{quote(lookup, safe='/')}")
+    response = _api_request(
+        "GET",
+        url,
+        token=token,
+        timeout=timeout,
+        not_found_ok=True,
+    )
+    if response is None:
+        return None
+    if not isinstance(response, list):
+        raise RuntimeError(f"unexpected GitHub API response while querying {ref}")
+    matches = [item for item in response if item.get("ref") == ref]
     if len(matches) > 1:
-        raise RuntimeError(f"multiple commits returned for {repo_url} {ref}")
-    return matches[0].lower() if matches else None
+        raise RuntimeError(f"multiple commits returned for {owner}/{repository} {ref}")
+    if not matches:
+        return None
+    return str(matches[0]["object"]["sha"]).lower()
 
 
-def _create_or_verify(repo_url: str, sha: str, ref: str, *, timeout: int) -> str:
-    existing = _existing_ref(repo_url, ref, timeout=timeout)
+def _create_ref(
+    owner: str,
+    repository: str,
+    sha: str,
+    ref: str,
+    *,
+    api_url: str,
+    token: str,
+    timeout: int,
+) -> None:
+    _api_request(
+        "POST",
+        _api_url(api_url, owner, repository, "git/refs"),
+        token=token,
+        timeout=timeout,
+        payload={"ref": ref, "sha": sha},
+    )
+
+
+def _create_or_verify(
+    repo_url: str,
+    sha: str,
+    ref: str,
+    *,
+    api_url: str,
+    token: str,
+    timeout: int,
+) -> str:
+    owner, repository = _github_repository(repo_url)
+    existing = _existing_ref(
+        owner,
+        repository,
+        ref,
+        api_url=api_url,
+        token=token,
+        timeout=timeout,
+    )
     if existing is not None:
         if existing != sha:
             raise RuntimeError(
@@ -55,16 +152,38 @@ def _create_or_verify(repo_url: str, sha: str, ref: str, *, timeout: int) -> str
             )
         return "skip"
 
-    result = _run(["git", "push", repo_url, f"{sha}:{ref}"], timeout=timeout)
-    if result.returncode != 0:
+    try:
+        _create_ref(
+            owner,
+            repository,
+            sha,
+            ref,
+            api_url=api_url,
+            token=token,
+            timeout=timeout,
+        )
+    except RuntimeError as error:
         # A concurrent creator is safe if it installed the same SHA.
-        existing = _existing_ref(repo_url, ref, timeout=timeout)
+        existing = _existing_ref(
+            owner,
+            repository,
+            ref,
+            api_url=api_url,
+            token=token,
+            timeout=timeout,
+        )
         if existing == sha:
             return "skip"
-        detail = result.stderr.strip() or f"exit status {result.returncode}"
-        raise RuntimeError(f"unable to create archive ref for {repo_url}: {detail}")
+        raise error
 
-    existing = _existing_ref(repo_url, ref, timeout=timeout)
+    existing = _existing_ref(
+        owner,
+        repository,
+        ref,
+        api_url=api_url,
+        token=token,
+        timeout=timeout,
+    )
     if existing != sha:
         raise RuntimeError(
             f"archive ref verification failed for {repo_url} {ref}: {existing or 'missing'}"
@@ -82,6 +201,7 @@ def main() -> int:
     )
     parser.add_argument("--lineage-revision", default="refs/heads/lineage-24.0")
     parser.add_argument("--timeout", type=int, default=60)
+    parser.add_argument("--api-url", default="https://api.github.com")
     parser.add_argument(
         "--controlled-remote",
         action="append",
@@ -94,6 +214,9 @@ def main() -> int:
 
     if args.timeout < 1:
         parser.error("--timeout must be positive")
+    token = os.environ.get("UWU_RELEASE_TOKEN")
+    if not token:
+        parser.error("UWU_RELEASE_TOKEN environment variable is required")
 
     try:
         version = parse_version(args.version)
@@ -122,7 +245,14 @@ def main() -> int:
                     f"controlled repository has multiple release SHAs: {repo_url}"
                 )
             sha = next(iter(shas))
-            action = _create_or_verify(repo_url, sha, archive_ref, timeout=args.timeout)
+            action = _create_or_verify(
+                repo_url,
+                sha,
+                archive_ref,
+                api_url=args.api_url,
+                token=token,
+                timeout=args.timeout,
+            )
             print(f"archive: {action} {repo_url} {archive_ref} -> {sha}", flush=True)
     except (OSError, ValueError, RuntimeError) as error:
         print(f"archive_refs.py: {error}", file=sys.stderr)
