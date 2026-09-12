@@ -1,0 +1,115 @@
+name: Release Snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: "uwu revision, for example 078 or 1200"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: uwu-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    env:
+      MANIFEST_URL: https://github.com/uwuAOSP/platform_manifests.git
+      MANIFEST_BRANCH: uwu-17.0
+      LINEAGE_REVISION: refs/heads/lineage-24.0
+      FREEZE_JOBS: "32"
+    steps:
+      - name: Check out version repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install repo tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y git-lfs repo
+
+      - name: Validate release version
+        id: version
+        env:
+          REQUESTED_REVISION: ${{ inputs.revision }}
+        run: |
+          VERSION="$(python3 tools/version_cli.py \
+            --version-file version.mk \
+            --revision "$REQUESTED_REVISION")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "release version: $VERSION"
+
+      - name: Test release tooling
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Configure cross-repository write access
+        env:
+          UWU_RELEASE_TOKEN: ${{ secrets.UWU_RELEASE_TOKEN }}
+        run: |
+          test -n "$UWU_RELEASE_TOKEN" || {
+            echo "UWU_RELEASE_TOKEN is required to create archive refs" >&2
+            exit 1
+          }
+          git config --global \
+            url."https://x-access-token:${UWU_RELEASE_TOKEN}@github.com/".insteadOf \
+            "https://github.com/"
+
+      - name: Freeze development manifest
+        env:
+          REQUESTED_REVISION: ${{ inputs.revision }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          python3 tools/freeze_manifest.py \
+            --revision "$REQUESTED_REVISION" \
+            --version-file version.mk \
+            --manifest-url "$MANIFEST_URL" \
+            --manifest-branch "$MANIFEST_BRANCH" \
+            --lineage-revision "$LINEAGE_REVISION" \
+            --output "manifest/${VERSION}.xml" \
+            --jobs "$FREEZE_JOBS"
+
+      - name: Create and verify archive refs
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          python3 tools/archive_refs.py \
+            --manifest "manifest/${VERSION}.xml" \
+            --version "$VERSION" \
+            --manifest-url "$MANIFEST_URL" \
+            --lineage-revision "$LINEAGE_REVISION"
+
+      - name: Upload frozen manifest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.version.outputs.version }}
+          path: manifest/${{ steps.version.outputs.version }}.xml
+          if-no-files-found: error
+
+      - name: Advance version for next release
+        env:
+          REQUESTED_REVISION: ${{ inputs.revision }}
+        run: |
+          python3 tools/bump_version.py \
+            --version-file version.mk \
+            --released-revision "$REQUESTED_REVISION"
+
+      - name: Commit and publish release snapshot
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "uwuAOSP Release Bot"
+          git config user.email "release-bot@uwuaosp.dev"
+          git add "manifest/${VERSION}.xml" version.mk
+          if git diff --cached --quiet; then
+            echo "release ${VERSION} is already committed"
+            exit 0
+          fi
+          git commit -m "version: Bump to ${VERSION}"
+          git push origin "HEAD:${BRANCH}"

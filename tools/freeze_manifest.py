@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -19,7 +18,7 @@ if __package__ in (None, ""):
         resolve_projects,
         write_tree_immutable,
     )
-    from tools.version_lib import parse_revision, read_version_mk
+    from tools.version_lib import Version, parse_revision, read_version_mk
 else:
     from .manifest_lib import (
         make_frozen,
@@ -28,7 +27,7 @@ else:
         resolve_projects,
         write_tree_immutable,
     )
-    from .version_lib import parse_revision, read_version_mk
+    from .version_lib import Version, parse_revision, read_version_mk
 
 
 def _run(command: list[str], *, cwd: Path) -> None:
@@ -105,11 +104,12 @@ def main() -> int:
     try:
         version = read_version_mk(args.version_file)
         revision = parse_revision(args.revision)
-        if revision != version.revision:
+        if revision <= version.revision:
             raise ValueError(
-                f"requested revision {revision} does not match {args.version_file}: "
-                f"{version.revision} ({version.text})"
+                f"requested revision {revision} must be greater than "
+                f"{args.version_file}: {version.revision} ({version.text})"
             )
+        release_version = Version(version.major, version.qpr, revision)
 
         template, temporary = _export_template(
             repo_root=args.repo_root,
@@ -126,7 +126,7 @@ def main() -> int:
         resolve_projects(projects, args.jobs, timeout=args.git_timeout)
         make_frozen(tree, projects)
         write_tree_immutable(tree, args.output)
-        print(f"Generated {args.output} for {version.text} ({len(projects)} projects)")
+        print(f"Generated {args.output} for {release_version.text} ({len(projects)} projects)")
     except (OSError, ValueError, RuntimeError) as error:
         print(f"freeze_manifest.py: {error}", file=sys.stderr)
         return 1

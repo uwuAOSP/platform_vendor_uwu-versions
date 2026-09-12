@@ -34,3 +34,12 @@ branch revision and are not SHA-resolved. All other remotes are SHA-pinned in
 the frozen manifest.
 
 Please note that generating sha1 from local source tree is NEVER allowed.
+
+## GitHub Actions
+
+Run the `Release Snapshot` workflow manually and enter a revision greater than
+the revision currently stored in `version.mk`, such as `081` when the current
+revision is `080`. The workflow initializes `platform_manifests` in a
+temporary directory, never runs `repo sync`, freezes the manifest with 32
+workers, creates archive refs for controlled repositories, updates `version.mk`
+to the requested revision, and commits the result.

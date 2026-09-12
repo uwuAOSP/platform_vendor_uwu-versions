@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
@@ -40,6 +42,48 @@ class VersionTest(unittest.TestCase):
 
     def test_parse_version(self) -> None:
         self.assertEqual(parse_version("17.0.078"), Version(17, 0, 78))
+
+    def test_version_cli_accepts_a_future_revision(self) -> None:
+        result = subprocess.run(
+            [
+                sys.executable,
+                "tools/version_cli.py",
+                "--version-file",
+                "version.mk",
+                "--revision",
+                "081",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "17.0.081")
+
+    def test_bump_cli_records_requested_revision(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "version.mk"
+            path.write_text(
+                "UWU_VERSION_MAJOR := 17\n"
+                "UWU_VERSION_QPR := 0\n"
+                "UWU_VERSION_REVISION := 80\n",
+                encoding="utf-8",
+            )
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "tools/bump_version.py",
+                    "--version-file",
+                    str(path),
+                    "--released-revision",
+                    "081",
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("UWU_VERSION_REVISION := 81", path.read_text(encoding="utf-8"))
 
 
 class ManifestTest(unittest.TestCase):
