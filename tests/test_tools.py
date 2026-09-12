@@ -44,6 +44,8 @@ class VersionTest(unittest.TestCase):
         self.assertEqual(parse_version("17.0.078"), Version(17, 0, 78))
 
     def test_version_cli_accepts_a_future_revision(self) -> None:
+        current = read_version_mk(Path("version.mk"))
+        future_revision = current.revision + 1
         result = subprocess.run(
             [
                 sys.executable,
@@ -51,14 +53,17 @@ class VersionTest(unittest.TestCase):
                 "--version-file",
                 "version.mk",
                 "--revision",
-                "081",
+                str(future_revision),
             ],
             check=False,
             capture_output=True,
             text=True,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "17.0.081")
+        self.assertEqual(
+            result.stdout.strip(),
+            Version(current.major, current.qpr, future_revision).text,
+        )
 
     def test_bump_cli_records_requested_revision(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
