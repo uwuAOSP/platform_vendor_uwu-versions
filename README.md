@@ -32,3 +32,5 @@ the tools accept an identical retry and reject different content.
 AOSP projects (`remote="aosp"`) intentionally retain their effective tag or
 branch revision and are not SHA-resolved. All other remotes are SHA-pinned in
 the frozen manifest.
+
+Please note that generating sha1 from local source tree is NEVER allowed.
