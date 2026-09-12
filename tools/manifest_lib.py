@@ -5,8 +5,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import subprocess
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import as_completed, ThreadPoolExecutor
 from pathlib import Path
+import sys
 import xml.etree.ElementTree as ET
 
 from .version_lib import candidate_refs, is_sha1, repository_url
@@ -155,18 +156,77 @@ def resolve_ref(repo_url: str, revision: str, *, timeout: int = 60) -> str:
 
 
 def resolve_projects(projects: list[ProjectRevision], jobs: int, *, timeout: int = 60) -> None:
-    """Resolve unique repository/revision pairs, then update projects deterministically."""
+    """Resolve unique repository/revision pairs, reporting and retrying failures."""
     to_resolve = [project for project in projects if project.remote not in SHA_EXEMPT_REMOTES]
-    keys = {(project.url, project.revision) for project in to_resolve}
-    with ThreadPoolExecutor(max_workers=max(1, jobs)) as executor:
-        futures = {
-            key: executor.submit(resolve_ref, key[0], key[1], timeout=timeout)
-            for key in sorted(keys)
-        }
-        resolved = {key: future.result() for key, future in futures.items()}
+    pending = {(project.url, project.revision) for project in to_resolve}
+    resolved: dict[tuple[str, str], str] = {}
+    attempt = 1
+
+    if any(project.remote in SHA_EXEMPT_REMOTES for project in projects):
+        exempt_count = sum(project.remote in SHA_EXEMPT_REMOTES for project in projects)
+        print(f"freeze: skipped SHA1 resolution for {exempt_count} AOSP project(s)")
+
+    while pending:
+        print(
+            f"freeze: resolving {len(pending)} repository/revision pair(s) "
+            f"with -j{max(1, jobs)} (attempt {attempt})",
+            flush=True,
+        )
+        failures: dict[tuple[str, str], str] = {}
+        ordered_pending = sorted(pending)
+        with ThreadPoolExecutor(max_workers=max(1, jobs)) as executor:
+            futures = {
+                executor.submit(resolve_ref, url, revision, timeout=timeout): (url, revision)
+                for url, revision in ordered_pending
+            }
+            for completed, future in enumerate(as_completed(futures), start=1):
+                url, revision = futures[future]
+                try:
+                    sha = future.result()
+                except Exception as error:  # Report all failures before deciding what to retry.
+                    failures[(url, revision)] = str(error).replace("\n", " ")
+                else:
+                    resolved[(url, revision)] = sha
+                    print(
+                        f"freeze: [{completed}/{len(ordered_pending)}] "
+                        f"SHA1 {sha} <- {url} ({revision})",
+                        flush=True,
+                    )
+
+        if not failures:
+            break
+
+        print(f"freeze: {len(failures)} SHA1 resolution(s) failed:", file=sys.stderr)
+        for url, revision in sorted(failures):
+            print(
+                f"freeze:   {url} ({revision}): {failures[(url, revision)]}",
+                file=sys.stderr,
+            )
+        if not _ask_retry():
+            raise RuntimeError(f"{len(failures)} SHA1 resolution(s) failed")
+        pending = set(failures)
+        attempt += 1
 
     for project in to_resolve:
         project.project.set("revision", resolved[(project.url, project.revision)])
+
+
+def _ask_retry() -> bool:
+    if not sys.stdin.isatty():
+        print("freeze: non-interactive input; not retrying", file=sys.stderr)
+        return False
+
+    while True:
+        try:
+            answer = input("freeze: retry failed repositories? [y/N]: ").strip().lower()
+        except EOFError:
+            print("freeze: no answer received; not retrying", file=sys.stderr)
+            return False
+        if answer in ("y", "yes"):
+            return True
+        if answer in ("", "n", "no"):
+            return False
+        print("freeze: please answer y or n", file=sys.stderr)
 
 
 def make_frozen(tree: ET.ElementTree, projects: list[ProjectRevision]) -> None:

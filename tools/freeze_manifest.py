@@ -53,6 +53,7 @@ def _export_template(
         return template, None
 
     if repo_root is not None:
+        repo_root = repo_root.resolve()
         output = repo_root / ".uwu-freeze-template.xml"
         _run(["repo", "manifest", "-o", str(output)], cwd=repo_root)
         return output, None
@@ -133,7 +134,7 @@ def main() -> int:
         if temporary is not None:
             temporary.cleanup()
         if args.repo_root is not None:
-            generated = args.repo_root / ".uwu-freeze-template.xml"
+            generated = args.repo_root.resolve() / ".uwu-freeze-template.xml"
             generated.unlink(missing_ok=True)
     return 0
 

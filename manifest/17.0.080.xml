@@ -1,0 +1,1255 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <remote name="UwUniverse" fetch="https://github.com/UwUniverse" />
+  <remote name="aosp" fetch="https://android.googlesource.com" review="https://android-review.googlesource.com/" />
+  <remote name="github" fetch=".." review="review.pixelos.net" />
+  <remote name="gitlab" fetch="https://gitlab.com/" />
+  <remote name="lineageos" fetch=".." review="review.lineageos.org" />
+  <remote name="uwuAOSP" fetch="https://github.com/uwuAOSP" />
+  
+  <default remote="aosp" sync-j="4" />
+  
+  <project name="LineageOS/android_bionic" path="bionic" remote="lineageos" revision="aa576c5c98770b2cee10ef6342960ed085606ef5" groups="pdk" />
+  <project name="LineageOS/android_bootable_deprecated-ota" path="bootable/deprecated-ota" remote="lineageos" groups="pdk-cw" revision="a60893a68b92701ff76b366c44910915c5f1fed4" />
+  <project name="LineageOS/android_development" path="development" remote="lineageos" groups="developers,pdk-cw-fs,pdk-fs,sysui-studio" revision="b73f9c4c56b9381366e368cae67e0684e9ec8b83" />
+  <project name="LineageOS/android_device_lineage_sepolicy" path="device/lineage/sepolicy" remote="lineageos" revision="89d748484d373e24ad067afa81db31a09eca3a49" />
+  <project name="LineageOS/android_device_qcom_sepolicy" path="device/qcom/sepolicy" remote="lineageos" groups="qcom,qssi" revision="9e8808ec261ed0c51872abfbefe621ba89c98c27" />
+  <project name="LineageOS/android_device_qcom_sepolicy" path="device/qcom/sepolicy-legacy-um" remote="lineageos" revision="3ba04b19a72afb83c5793c7c908670d559a1c5e6" groups="qcom,sdm660" />
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/legacy-um" remote="lineageos" revision="89590c1c54162f615fb912102517fe13e62378c3" groups="lahaina,qcom" />
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/sm8450" remote="lineageos" revision="94f46cb238b06d77878eaefe99dc77e85fea3085" groups="qcom,waipio-vendor" />
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/sm8550" remote="lineageos" revision="9b2bbbb2bf3dd37fd2a03601aae1336a9e7f0c59" groups="kailua-vendor,qcom" />
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/sm8650" remote="lineageos" revision="b8fce77f0dbdc9cf7f6c27098d7e1a60182bf89d" groups="lanai-vendor,qcom" />
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/sm8750" remote="lineageos" revision="ec05d4507edd0e1df1b0db7862c3ce2aeec02454" groups="pakala-vendor,qcom" />
+  <project name="LineageOS/android_external_ant-wireless_hidl" path="external/ant-wireless/hidl" remote="lineageos" groups="qcom,qssi" revision="ce589dc08e4215b063bfac73eb7b9b52cf46d944" />
+  <project name="LineageOS/android_external_avb" path="external/avb" remote="lineageos" groups="pdk" revision="eee020ea99441e8cf5a4f0789f0abb98c73fc3ce" />
+  <project name="LineageOS/android_external_bash" path="external/bash" remote="lineageos" revision="1094f161361ad75af92c968da680f2f5b3cf752b" />
+  <project name="LineageOS/android_external_chromium-webview_patches" path="external/chromium-webview/patches" remote="lineageos" revision="b29edaec0c61bac615a30263b70cc965c2551ffd" groups="pdk">
+    <linkfile src="os_pickup.bp" dest="external/chromium-webview/Android.bp" />
+    <linkfile src="README" dest="external/chromium-webview/README" />
+  </project>
+  <project name="LineageOS/android_external_chromium-webview_prebuilt_arm" path="external/chromium-webview/prebuilt/arm" remote="lineageos" revision="9f672a0b29b66e75333f9e0984a60615724f0a20" groups="pdk" />
+  <project name="LineageOS/android_external_chromium-webview_prebuilt_arm64" path="external/chromium-webview/prebuilt/arm64" remote="lineageos" revision="11fd8afe58c011d04cb3c1b2259f406ec9fd49f2" groups="pdk" />
+  <project name="LineageOS/android_external_chromium-webview_prebuilt_x86" path="external/chromium-webview/prebuilt/x86" remote="lineageos" revision="69d94d6d5c7e82dec3364bb5767db1fcabca0a07" groups="pdk" />
+  <project name="LineageOS/android_external_chromium-webview_prebuilt_x86_64" path="external/chromium-webview/prebuilt/x86_64" remote="lineageos" revision="d676fedf7ac7cdec6228f4e4173f753f1e906829" groups="pdk" />
+  <project name="LineageOS/android_external_dng_sdk" path="external/dng_sdk" remote="lineageos" revision="104f789f8d920ee34ef7e5d4a374dc4b41760399" groups="pdk" />
+  <project name="LineageOS/android_external_dtc" path="external/dtc" remote="lineageos" groups="pdk" revision="c1197f56b8f468effbbf5e79feae353c4280e2ea" />
+  <project name="LineageOS/android_external_e2fsprogs" path="external/e2fsprogs" remote="lineageos" groups="pdk" revision="347a1592a840e193b9c52674227d72c9c3cc1a69" />
+  <project name="LineageOS/android_external_exfatprogs" path="external/exfatprogs" remote="lineageos" revision="3379ed50f76459f84e3859aa679942e9daced46c" />
+  <project name="LineageOS/android_external_gptfdisk" path="external/gptfdisk" remote="lineageos" groups="pdk" revision="1b4c182411747173deb1a5cccdcdd3d36b87295b" />
+  <project name="LineageOS/android_external_htop" path="external/htop" remote="lineageos" revision="ff411eb6f0b716294440dbb5b24a090a1ad67af9" />
+  <project name="LineageOS/android_external_json-c" path="external/json-c" remote="lineageos" groups="qcom,qssi" revision="53b84fa96d174d7debafa3ac560dc36271872637" />
+  <project name="LineageOS/android_external_libjxl" path="external/libjxl" remote="lineageos" revision="d8142392d04e67920bff2f554ebd2d6bd2e4fe58" groups="pdk" />
+  <project name="LineageOS/android_external_libncurses" path="external/libncurses" remote="lineageos" revision="cf8d1a3f3b0ab6f9385c3361e1aada7ecc635ad6" />
+  <project name="LineageOS/android_external_mksh" path="external/mksh" remote="lineageos" groups="pdk" revision="35d7cce387b94c2a33fd3e64a48301552fce7fd5" />
+  <project name="LineageOS/android_external_nano" path="external/nano" remote="lineageos" revision="b83fc23d564c5377fc7c3322e5f75e81d8dad37e" />
+  <project name="LineageOS/android_external_openssh" path="external/openssh" remote="lineageos" revision="60ca88651d39f699932f63d41409facc18c5ad19" groups="pdk" />
+  <project name="LineageOS/android_external_rsync" path="external/rsync" remote="lineageos" revision="6a2e628ca95b172243abfdad1e86b88fb895fb3f" />
+  <project name="LineageOS/android_external_tinycompress" path="external/tinycompress" remote="lineageos" groups="pdk" revision="7a3ded281c0068322b89eb49438308fa5f46dfa1" />
+  <project name="LineageOS/android_external_unrar" path="external/unrar" remote="lineageos" revision="140cfb9e8fc984cab5060cd09983e6d33a2fae41" />
+  <project name="LineageOS/android_external_vim" path="external/vim" remote="lineageos" revision="f31199df8fca8148b61ae94bbfcb834021f5bdd9" />
+  <project name="LineageOS/android_external_zstd" path="external/zstd" remote="lineageos" groups="pdk" revision="1bfdf8aef6bdec0e817c1f75aeaf382db22de668" />
+  <project name="LineageOS/android_hardware_broadcom_libbt" path="hardware/broadcom/libbt" remote="lineageos" revision="a4004b63a0d4e8b495a3bf36505801589a7210c5" groups="pdk" />
+  <project name="LineageOS/android_hardware_google_pixel" path="hardware/google/pixel" remote="lineageos" groups="generic_fs,pdk-desktop,pdk-gs-arm,pdk-gs-imgtec,pixel" revision="8bd3c71cf2be40cfbe8f5a4b9bf5574ee9fbc624" />
+  <project name="LineageOS/android_hardware_google_pixel-sepolicy" path="hardware/google/pixel-sepolicy" remote="lineageos" groups="generic_fs,pdk-desktop,pixel" revision="35b8a9e0b8601b6d443e55e9aed52f8b55663510" />
+  <project name="LineageOS/android_hardware_interfaces" path="hardware/interfaces" remote="lineageos" revision="6b9a2ab61c0177b5ee8cb42f5fbe5558cca60367" groups="pdk,sysui-studio" />
+  <project name="LineageOS/android_hardware_knowles_athletico_sound_trigger_hal" path="hardware/knowles/athletico/sound_trigger_hal" remote="lineageos" groups="coral" revision="16e4d7f6d3201905f103d36ff7195d9e21ce1671" />
+  <project name="LineageOS/android_hardware_libhardware" path="hardware/libhardware" remote="lineageos" groups="pdk" revision="d7f13275b6a210f56110b46609a2e83b2feccd99" />
+  <project name="LineageOS/android_hardware_lineage_compat" path="hardware/lineage/compat" remote="lineageos" revision="fd39efc60710c59c14f8c19c767f852ed1c2cc17" />
+  <project name="LineageOS/android_hardware_lineage_interfaces" path="hardware/lineage/interfaces" remote="lineageos" revision="ecac852b68bb1532e6b2c85317c33ff14d387acb" />
+  <project name="LineageOS/android_hardware_nxp_nfc" path="hardware/nxp/nfc" remote="lineageos" groups="pdk" revision="549ce77bbddfb9f2974e8e0d207bd9a99479b545" />
+  <project name="LineageOS/android_hardware_qcom-caf_common" path="hardware/qcom-caf/common" remote="lineageos" groups="qcom" revision="2cd569fbf966e84d67fd86e7f14f9fc4fa621030">
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450-6.6/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8650/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8750/Android.bp" />
+  </project>
+  <project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/msm8953/audio" remote="lineageos" revision="f9ff4f29d8f330a8a97c4d3b49de5d9f37ebcb8a" groups="msm8953,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/sdm660/audio" remote="lineageos" revision="90647c475fc51315a1a09fd244cdf5592f0e295b" groups="qcom,sdm660" />
+  <project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/sm8150/audio" remote="lineageos" revision="d1ae1d822e49422a2a02e9864578fb92491b355e" groups="msmnile,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/sm8250/audio" remote="lineageos" revision="da531fc8a1348373308ccacaca5fdbb15baf700d" groups="kona,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/sm8350/audio" remote="lineageos" revision="9596e4bcde851fdff2e312c69a13ac06645c6681" groups="lahaina,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8450/audio/primary-hal" remote="lineageos" revision="9f4dec53710a32af11cfffd89256daf7de2a9dee" groups="qcom,waipio-vendor" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8450-6.6/audio/primary-hal" remote="lineageos" revision="6a42341357a56903eea27a74fdb161a26402dcc3" groups="qcom,waipio-6.6-vendor" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8550/audio/primary-hal" remote="lineageos" revision="aa1495561e9ca90e80c5a2b898a67f75406dc874" groups="kailua-audio,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8650/audio/primary-hal" remote="lineageos" revision="2aa541f626ecc029fce24f3882aaee84c11fb161" groups="lanai-audio,qcom" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8750/audio/primary-hal" remote="lineageos" revision="443dec4613a7e5dbc997eb2d7b087f0f07ae5258" groups="pakala-audio,qcom" />
+  <project name="LineageOS/android_hardware_qcom_bootctrl" path="hardware/qcom-caf/bootctrl" remote="lineageos" revision="25092672e644459db328b43fd1c7c57cbff65c91" groups="kaanapali-vendor,qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/msm8953/display" remote="lineageos" revision="fd1cfe095f3cb4073f2ac6216e4d4457ba50f312" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sdm660/display" remote="lineageos" revision="0ce1694ece44c596362d97c8f375fa7a861b7865" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8150/display" remote="lineageos" revision="6e9e061073de8c0ae6568cb71a168cc6a2bad5d9" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8250/display" remote="lineageos" revision="9ec8cc08004bcf005fe5c174522e1f395d3f5888" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8350/display" remote="lineageos" revision="e9bbe9a980d408af36b52f2abaae7c35647b7425" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8450/display" remote="lineageos" revision="222878b523a9140dd1c1364230c95655228b8039" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8450-6.6/display/hal" remote="lineageos" revision="ce8d3bb79a8519a1241049d68f8b73d73ff4f400" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8550/display" remote="lineageos" revision="d679d895cd1e35d088b67bfd19d9141c76da5207" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8650/display" remote="lineageos" revision="fe6db19f67a58c43a794b9517eade8426dcce71c" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8750/display/hal" remote="lineageos" revision="4b74f47925c54e95c805275832a65830af0431b6" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_media" path="hardware/qcom-caf/msm8953/media" remote="lineageos" revision="9861d78316d1933b3d0a20cf9139a3a23aa88fd7" groups="msm8953,qcom" />
+  <project name="LineageOS/android_hardware_qcom_media" path="hardware/qcom-caf/sdm660/media" remote="lineageos" revision="2098857ca9e357840703605c1520c9a9b4c21ff2" groups="qcom,sdm660" />
+  <project name="LineageOS/android_hardware_qcom_media" path="hardware/qcom-caf/sm8150/media" remote="lineageos" revision="67641d710ec876fa922fcd10f6f65f7632e5ca08" groups="msmnile,qcom" />
+  <project name="LineageOS/android_hardware_qcom_media" path="hardware/qcom-caf/sm8250/media" remote="lineageos" revision="de3a6cfed8654aaf187bd9c69127f3c5bf0f98ac" groups="kona,qcom" />
+  <project name="LineageOS/android_hardware_qcom_sm7250_display" path="hardware/qcom/sm7250/display" remote="lineageos" groups="qcom,qcom_sm7250" revision="d3fae6913731a30c135a6cd1fab803913da06998" />
+  <project name="LineageOS/android_hardware_qcom_sm7250_gps" path="hardware/qcom/sm7250/gps" remote="lineageos" groups="qcom,qcom_sm7250" revision="c0e0375f06c0335062f19e3d87cb84d3c27cbc57" />
+  <project name="LineageOS/android_hardware_qcom_sm8150_display" path="hardware/qcom/sm8150/display" remote="lineageos" groups="qcom,qcom_sm8150" revision="bcae019f82f572efbe44fa4b68fde26690bce3c3" />
+  <project name="LineageOS/android_hardware_qcom_sm8150_gps" path="hardware/qcom/sm8150/gps" remote="lineageos" groups="qcom,qcom_sm8150" revision="c102ecaf661265a5bb4bab028c4dba8454016e1b" />
+  <project name="LineageOS/android_hardware_qcom_thermal" path="hardware/qcom-caf/thermal" remote="lineageos" groups="kaanapali-vendor,qcom" revision="a54c4bef6ae6df53684ec538e9fdd713775238cb" />
+  <project name="LineageOS/android_hardware_qcom_thermal" path="hardware/qcom-caf/thermal-legacy-um" remote="lineageos" revision="ed7107216e598c4089d8ea2ed1d39c117ffab0c1" groups="lanai-vendor,qcom" />
+  <project name="LineageOS/android_hardware_qcom_wlan" path="hardware/qcom/wlan" remote="lineageos" groups="pdk-qcom,qcom,qcom_wlan" revision="4110d72de3eaee4c1091ba17af8b52449acb62a6" />
+  <project name="LineageOS/android_hardware_qcom_wlan" path="hardware/qcom-caf/wlan" remote="lineageos" revision="4593f9b377e25a7cd55b2319e7f85bf5ae35104b" groups="kaanapali-wlan,qcom" />
+  <project name="LineageOS/android_hardware_samsung_nfc" path="hardware/samsung/nfc" remote="lineageos" revision="51a20495c915cabe0be8060f6cfc0ce194244d72" groups="pdk" />
+  <project name="LineageOS/android_hardware_st_nfc" path="hardware/st/nfc" remote="lineageos" groups="pdk" revision="339688552c324ff6c96a0c52e43254100dc56e95" />
+  <project name="LineageOS/android_kernel_configs" path="kernel/configs" remote="lineageos" groups="pdk,vts" revision="200b3987b78fc25015bf826b281f0c3851daf146" />
+  <project name="LineageOS/android_packages_apps_Aperture" path="packages/apps/Aperture" remote="lineageos" revision="cf1bc0a72524318d0e06ebe938a20b170f1eb878" />
+  <project name="LineageOS/android_packages_apps_EuiccPolicy" path="packages/apps/EuiccPolicy" remote="lineageos" revision="7232f94f1a908272d4b72bf13277a54c889f9f2c" />
+  <project name="LineageOS/android_packages_apps_FMRadio" path="packages/apps/FMRadio" remote="lineageos" revision="93829710fe40d115d6aa3780f7e32507d9ee6a24" />
+  <project name="LineageOS/android_packages_modules_Bluetooth" path="packages/modules/Bluetooth" remote="lineageos" revision="d9326a0bdb33e1afcfce015e5a1ad3433341ca08" groups="pdk" />
+  <project name="LineageOS/android_packages_modules_Connectivity" path="packages/modules/Connectivity" remote="lineageos" revision="7c04d866538e6f689823b769fb5c1e614ca0e295" groups="pdk-cw-fs,pdk-fs" />
+  <project name="LineageOS/android_packages_modules_Permission" path="packages/modules/Permission" remote="lineageos" revision="dede0f566f5ada73ebb70e2b28f69d8547955e8c" groups="pdk-cw-fs,pdk-fs" />
+  <project name="LineageOS/android_packages_modules_Wifi" path="packages/modules/Wifi" remote="lineageos" revision="503b89cadec7c6020eae6207be809f0854c2f3c1" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
+  <project name="LineageOS/android_packages_modules_adb" path="packages/modules/adb" remote="lineageos" groups="pdk" revision="f83360242ba6a66ae7570e126009ab530eeef120" />
+  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="lineageos" revision="e91c79901e06b1cff702d004824af620a8b2bf9c" />
+  <project name="LineageOS/android_packages_services_DeviceAsWebcam" path="packages/services/DeviceAsWebcam" remote="lineageos" groups="pdk-cw-fs,pdk-fs" revision="c5b6159d081ed2e417974388d8f98a58d6b57656" />
+  <project name="LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b" path="prebuilts/clang/kernel/linux-x86/clang-r416183b" remote="lineageos" revision="54220fd601050b350b2af7adc913089ebf0e7aed" clone-depth="1" />
+  <project name="LineageOS/android_prebuilts_extract-tools" path="prebuilts/extract-tools" remote="lineageos" clone-depth="1" revision="aaeb969a477321411279c03799f45ae9f94f770b" />
+  <project name="LineageOS/android_prebuilts_tools-lineage" path="prebuilts/tools-lineage" remote="lineageos" clone-depth="1" revision="7cf9452c82a0265d00e8c444f25639b7aa66969d" />
+  <project name="LineageOS/android_system_bpf" path="system/bpf" remote="lineageos" groups="pdk" revision="1787201ef62581ee5532fdb1e5b0cbc3fb137dab" />
+  <project name="LineageOS/android_system_chre" path="system/chre" remote="lineageos" revision="a0edaf6836e32fb54a077c068cfd472f2cc1fca5" groups="pdk" />
+  <project name="LineageOS/android_system_extras" path="system/extras" remote="lineageos" groups="pdk" revision="378b92d7f4511cb3f23a34fecc694b9704530374" />
+  <project name="LineageOS/android_system_fs_fs_mgr" path="system/fs/fs_mgr" remote="lineageos" revision="360d5358d719d6b5fe08ccdec20904b38e17b128" groups="pdk" />
+  <project name="LineageOS/android_system_libziparchive" path="system/libziparchive" remote="lineageos" groups="pdk" revision="8908f2ad624aa8b7ed15b2f877e0a26fb1156553" />
+  <project name="LineageOS/android_system_logging" path="system/logging" remote="lineageos" groups="pdk" revision="336e1707c8258adf1f1c5c5511218b533f3a22e8" />
+  <project name="LineageOS/android_system_media" path="system/media" remote="lineageos" revision="a6e89ff7fdee50366c2790e09531fd94f81e522b" groups="pdk" />
+  <project name="LineageOS/android_system_memory_libion" path="system/memory/libion" remote="lineageos" groups="pdk" revision="abd899da1a42064c66067bc84f427bf27edd81f9" />
+  <project name="LineageOS/android_system_update_engine" path="system/update_engine" remote="lineageos" revision="6808061dbce01ca51b618d2b7437c4e6df65e2e1" groups="pdk" />
+  <project name="LineageOS/android_system_vold" path="system/vold" remote="lineageos" revision="11d8982f824d52e8122c7aa732207ba66b8f23c8" groups="pdk" />
+  <project name="LineageOS/android_tools_extract-utils" path="tools/extract-utils" remote="lineageos" revision="06594f29f47de6df46167983f9567be58212974a" />
+  <project name="LineageOS/android_vendor_apn" path="vendor/apn" remote="lineageos" revision="e003409d302e0ba3bd8f2385e8f237d191896b0e" />
+  <project name="LineageOS/android_vendor_codeaurora_telephony" path="vendor/codeaurora/telephony" remote="lineageos" groups="qcom,qssi" revision="5a048ec75771d4cc7becce6ab71c06de55f7a374" />
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8450/audio/agm" remote="lineageos" revision="35c3491ff5566de4f60a64ad47e74fb39cd192e0" groups="qcom,waipio-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8450-6.6/audio/agm" remote="lineageos" revision="58c1c901810528802a10560399d6bc20d8bb29ce" groups="qcom,waipio-6.6-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8550/audio/agm" remote="lineageos" revision="10316d1cf67a187721ab56af7e7359837c693885" groups="kailua-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8650/audio/agm" remote="lineageos" revision="ec6b675a3487fa6481756a6978fcc1f0d8b9a0b3" groups="lanai-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8750/audio/agm" remote="lineageos" revision="853c0f6afd242b506636c9af47cb4ed64a4056f0" groups="pakala-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8450/audio/pal" remote="lineageos" revision="c6f8e48dd5de9b4ed07b697ec4e7329e98d42e69" groups="qcom,waipio-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8450-6.6/audio/pal" remote="lineageos" revision="8342f6301e7a241675349319a16d894bb455a27f" groups="qcom,waipio-6.6-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8550/audio/pal" remote="lineageos" revision="39e763ea1d1bf39b8661785bc69c34abd7ead70d" groups="kailua-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8650/audio/pal" remote="lineageos" revision="9cad645e8e7ed30f4efd8ca43be20bb76fa264af" groups="lanai-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8750/audio/pal" remote="lineageos" revision="c0f825a2320577b9069783947ceec764bef8f672" groups="pakala-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audio" path="vendor/qcom/opensource/commonsys/audio" remote="lineageos" groups="qcom,qssi" revision="d73c0cdc4877aea38e4f159fde9991022c8740d9" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audio-commonsys-intf" path="vendor/qcom/opensource/commonsys-intf/audio" remote="lineageos" groups="qcom,qssi" revision="50598b206c44cf5366dc6b00cb7173c616f233ec" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audio-hal_st-hal" path="vendor/qcom/opensource/audio-hal/st-hal" remote="lineageos" groups="lahaina,qcom" revision="943789d6972cc2e05b9e26afbb21cd53253784d7" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audio-hal_st-hal-ar" path="vendor/qcom/opensource/audio-hal/st-hal-ar" remote="lineageos" groups="kaanapali-audio,qcom" revision="9fd549f036b8d880d345e19a25b36fde3de9865d" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audio-hal_st-hal-ar" path="vendor/qcom/opensource/audio-hal/st-hal-ar-legacy" remote="lineageos" revision="219a0a322c2dd330531a13ed55c507e9bc442fef" groups="lanai-audio,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8450/audio/graphservices" remote="lineageos" revision="75d5e460413cad62a53f4621f9d9bd04ab664afd" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8450-6.6/audio/graphservices" remote="lineageos" revision="704ed68ff3361831c7a6e001e884e3b77d72e8b5" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8550/audio/graphservices" remote="lineageos" revision="1d2e82222dbc35b9b2cff966281cd2b7a26d081a" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8650/audio/graphservices" remote="lineageos" revision="49a735ba16fe132dbb2075590ff51603eafb68f7" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8750/audio/graphservices" remote="lineageos" revision="62591b81ddb14cb1ddecf2a8e7162f2082456793" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_core-utils-sys" path="vendor/qcom/opensource/core-utils-sys" remote="lineageos" groups="qcom,qssi" revision="c149e22f0750751d34e42380e43087a3340f2288" />
+  <project name="LineageOS/android_vendor_qcom_opensource_core-utils-vendor" path="vendor/qcom/opensource/core-utils-vendor" remote="lineageos" groups="kaanapali-vendor,qcom" revision="414fa42592568a6d9537f804c3d7dd4a95fcfd86" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8450/data-ipa-cfg-mgr" remote="lineageos" revision="a17b3e29dcbef0ebf49cbd8e9e5f5eda1e2bc72c" groups="qcom,waipio-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8450-6.6/data-ipa-cfg-mgr" remote="lineageos" revision="74b11514ae6cfeff008aba6aa0b6d7c204bd8479" groups="qcom,waipio-6.6-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8550/data-ipa-cfg-mgr" remote="lineageos" revision="a37a4556aceab0da28a60e21fd1b887fe83347c7" groups="kailua-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8650/data-ipa-cfg-mgr" remote="lineageos" revision="0b5c34253eb7786e84ba5f99b7c53c0f0331b839" groups="lanai-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8750/data-ipa-cfg-mgr" remote="lineageos" revision="5c754092b8e85dd72904b9a5c62a687bae9ce627" groups="pakala-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um" remote="lineageos" revision="897e6561f4c16cc1ab0bf397e6c0a657a1ed6231" groups="lahaina,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataipa" path="hardware/qcom-caf/sm8450-6.6/dataipa" remote="lineageos" revision="3296f05f239a4f01772084d68ca5adc2f9cb1e6b" groups="qcom,waipio-6.6-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataipa" path="hardware/qcom-caf/sm8550/dataipa" remote="lineageos" revision="a964339653ed78a7638b391487aa63b932ce80b6" groups="kailua-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataipa" path="hardware/qcom-caf/sm8650/dataipa" remote="lineageos" revision="1311e1cb35a327cc18fbd774852f725df13f4f67" groups="lanai-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataipa" path="hardware/qcom-caf/sm8750/dataipa" remote="lineageos" revision="c6206833bd59478caaa0a69e9d71f1bbfa866a96" groups="pakala-vendor,qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataservices" path="vendor/qcom/opensource/dataservices" remote="lineageos" groups="kaanapali-vendor,qcom" revision="86a07cbb22386860173943ab55720461981f47b2" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display" path="vendor/qcom/opensource/display" remote="lineageos" groups="qcom" revision="74a5c56b6229dbe518b43cf781e4c52e1a5ecb71" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-commonsys" path="vendor/qcom/opensource/commonsys/display" remote="lineageos" groups="qcom,qssi" revision="6ce6b29f83971ac0dca528ca45e27bf8ef5075b9" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-commonsys-intf" path="vendor/qcom/opensource/commonsys-intf/display" remote="lineageos" groups="qcom,qssi" revision="67b6c4c4f7823da821d36eb92404be5a32bd6172" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-core" path="hardware/qcom-caf/sm8450-6.6/display/core" remote="lineageos" revision="372783d5eff5310aaf498349d930c6b2ccd45c2c" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-core" path="hardware/qcom-caf/sm8750/display/core" remote="lineageos" revision="20cf597e21bdd31af4e3a55660e991e22f69bf8b" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-intf" path="hardware/qcom-caf/sm8450-6.6/display/intf" remote="lineageos" revision="321608d1ce7f0364d69d93ee9cf3c759d54fec55" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-intf" path="hardware/qcom-caf/sm8750/display/intf" remote="lineageos" revision="19b5c055b40bc3d7af4309662eea98c7e7a72cee" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_fm-commonsys" path="vendor/qcom/opensource/commonsys/fm" remote="lineageos" groups="qcom,qssi" revision="1fa107ad6e104ae60507443f00e92ded16547cd1" />
+  <project name="LineageOS/android_vendor_qcom_opensource_healthd-ext" path="vendor/qcom/opensource/healthd-ext" remote="lineageos" groups="kaanapali-vendor,qcom" revision="7d565896ebdb1662daa2cf0f72e80206cfda104c" />
+  <project name="LineageOS/android_vendor_qcom_opensource_interfaces" path="vendor/qcom/opensource/interfaces" remote="lineageos" groups="qcom,qssi" revision="6ba4b50c695d84a7dcc9a4f68d745f6498ed9f68" />
+  <project name="LineageOS/android_vendor_qcom_opensource_libfmjni" path="vendor/qcom/opensource/libfmjni" remote="lineageos" groups="qcom" revision="c5ace14ef01fc5842c64284daf26c4ee6b210811" />
+  <project name="LineageOS/android_vendor_qcom_opensource_libqspa" path="vendor/qcom/opensource/libqspa" remote="lineageos" groups="k2c-le,qcom" revision="5349531e2b04b1fb3562cbf7298670210f89d676" />
+  <project name="LineageOS/android_vendor_qcom_opensource_libvmmem" path="vendor/qcom/opensource/libvmmem" remote="lineageos" groups="k2c-le,qcom" revision="a4a0b08614eb1de238dd1fbe4cef94213560d5f1" />
+  <project name="LineageOS/android_vendor_qcom_opensource_power" path="vendor/qcom/opensource/power" remote="lineageos" groups="kaanapali-vendor,qcom" revision="337f837cb5e0a9dd84d4c5617b7e7dca8a380975" />
+  <project name="LineageOS/android_vendor_qcom_opensource_thermal-engine" path="vendor/qcom/opensource/thermal-engine" remote="lineageos" groups="kaanapali-vendor,qcom" revision="0815f34094ebc952c8e1dd3619e384c7f9d1195b" />
+  <project name="LineageOS/android_vendor_qcom_opensource_usb" path="vendor/qcom/opensource/usb" remote="lineageos" groups="kaanapali-vendor,qcom" revision="7cfca29353e0d490fa5289e1d549506fedaa4ace" />
+  <project name="LineageOS/android_vendor_qcom_opensource_vibrator" path="vendor/qcom/opensource/vibrator" remote="lineageos" groups="kaanapali-vendor,qcom" revision="7ec51495bebe272097fc5b7f95cbf5ff92180e71" />
+  <project name="LineageOS/android_vendor_qcom_opensource_wfd-commonsys" path="vendor/qcom/opensource/commonsys/wfd" remote="lineageos" groups="kaanapali-video,qcom" revision="b54a2fce355046c790949e9ec3445a7065dc5665" />
+  <project name="LineageOS/scripts" path="lineage/scripts" remote="lineageos" revision="d0edcaeb8597ce1a3d81867a64deffdbc0686aaf" groups="tools" />
+  <project name="PixelOS-AOSP/android_external_bouncycastle" path="external/bouncycastle" remote="github" groups="pdk" revision="f5e089c319a22ab66740c494d735ffbc87b40790" />
+  <project name="PixelOS-AOSP/android_packages_apps_ParanoidSense" path="packages/apps/ParanoidSense" remote="github" revision="967c7873bb7709b3c8a06ff9bc40becfee3d478f" />
+  <project name="PixelOS-AOSP/android_packages_apps_TouchGestures" path="packages/apps/TouchGestures" remote="github" revision="5294f537f8100d2f98e705fd54b55becd4ad76ec" />
+  <project name="PixelOS-AOSP/android_packages_services_Telecomm" path="packages/services/Telecomm" remote="github" groups="pdk-cw-fs,pdk-fs" revision="8ae5f8b48a6daeba869ba8ddce97eed23baeed08" />
+  <project name="PixelOS-AOSP/android_vendor_custom-preference" path="vendor/custom-preference" remote="github" revision="4d569cc0e76cb4183c0761bebd1f8c81f5fc7a95" />
+  <project name="PixelOS-AOSP/android_vendor_pixel_extract-utils" path="vendor/pixel/extract-utils" remote="gitlab" revision="1d33f8006c517d40e1cc2266583806d557db4680">
+    <linkfile src="extract-all.sh" dest="vendor/pixel/extract-all.sh" />
+  </project>
+  <project name="PixelOS-AOSP/proprietary_vendor_pixel_gms-17" path="vendor/pixel/gms" remote="gitlab" revision="7feb3322ac4a0849f32d8b95e565e73cf6774a20" />
+  <project name="PixelOS-AOSP/proprietary_vendor_pixel_gsans" path="vendor/pixel/gsans" remote="gitlab" revision="704c1ad882d640d7052dbd59d40b79162d339bf5" />
+  <project name="PixelOS-AOSP/proprietary_vendor_pixel_sounds" path="vendor/pixel/sounds" remote="gitlab" revision="7e322bfc120005918bd6d2800f46ed31ad8c3b74" />
+  <project name="device/common" groups="pdk,pdk-cw-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/arm64" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/armv7-a-neon" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/art" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/car" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/common" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/goldfish" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/trusty" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/x86" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/generic/x86_64" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/atv" groups="broadcom_pdk,device,generic_fs,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/contexthub" groups="device,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/cuttlefish" groups="device,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/cuttlefish_prebuilts" groups="device,pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/cuttlefish_vmm" groups="device,pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/sdv" groups="pdk,swcar" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/sdv_display_safety" groups="pdk,swcar" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google/trout" groups="device,pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/google_car" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="device/sample" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.1/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.1/x86-64" path="kernel/prebuilts/6.1/x86_64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.12/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.12/x86-64" path="kernel/prebuilts/6.12/x86_64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.18/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.18/x86-64" path="kernel/prebuilts/6.18/x86_64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.6/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/6.6/x86-64" path="kernel/prebuilts/6.6/x86_64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/build-tools" path="prebuilts/kernel-build-tools" revision="main-kernel-2025" clone-depth="1" />
+  <project name="kernel/prebuilts/common-modules/trusty/6.12/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/trusty/6.6/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.1/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.1/x86-64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.12/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.12/x86-64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.18/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.18/x86-64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.6/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/6.6/x86-64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/mainline/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/common-modules/virtual-device/mainline/x86-64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/mainline/arm64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/prebuilts/mainline/x86-64" path="kernel/prebuilts/mainline/x86_64" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="kernel/tests" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/art" path="art" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/bootable/libbootloader" path="bootable/libbootloader" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/build/pesto" path="build/pesto" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/build/release" path="build/release" groups="pdk,sysui-studio,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/cts" path="cts" groups="cts,pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/dalvik" path="dalvik" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/developers/build" path="developers/build" groups="developers,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/AFLplusplus" path="external/AFLplusplus" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ComputeLibrary" path="external/ComputeLibrary" groups="pdk-arsp-ag-sot,pdk-arsp-common,pdk-lassen" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/FP16" path="external/FP16" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/FXdiv" path="external/FXdiv" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/Little-CMS" path="external/Little-CMS" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/MPAndroidChart" path="external/MPAndroidChart" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/OpenCL-CLHPP" path="external/OpenCL-CLHPP" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/OpenCL-CTS" path="external/OpenCL-CTS" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/OpenCL-Headers" path="external/OpenCL-Headers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/OpenCL-ICD-Loader" path="external/OpenCL-ICD-Loader" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/OpenCSD" path="external/OpenCSD" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/SPIRV-Headers" path="external/SPIRV-Headers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/SPIRV-Tools" path="external/SPIRV-Tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/TestParameterInjector" path="external/TestParameterInjector" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/XMP-Toolkit-SDK" path="external/XMP-Toolkit-SDK" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/XNNPACK" path="external/XNNPACK" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/aac" path="external/aac" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/abseil-cpp" path="external/abseil-cpp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/accessibility-test-framework" path="external/accessibility-test-framework" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/accompanist" path="external/accompanist" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/acpica" path="external/acpica" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/android-browser-helper" path="external/android-browser-helper" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/android-key-attestation" path="external/android-key-attestation" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/android-nn-driver" path="external/android-nn-driver" groups="pdk-arsp-ag-sot,pdk-arsp-common,pdk-lassen" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/android_onboarding" path="external/android_onboarding" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/androidplot" path="external/androidplot" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/angle" path="external/angle" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/animal-sniffer" path="external/animal-sniffer" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/anonymous-counting-tokens" path="external/anonymous-counting-tokens" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/antlr" path="external/antlr" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-commons-bcel" path="external/apache-commons-bcel" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-commons-compress" path="external/apache-commons-compress" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-commons-io" path="external/apache-commons-io" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-commons-lang" path="external/apache-commons-lang" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-commons-math" path="external/apache-commons-math" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-harmony" path="external/apache-harmony" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-http" path="external/apache-http" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-velocity-engine" path="external/apache-velocity-engine" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/apache-xml" path="external/apache-xml" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/arm-neon-tests" path="external/arm-neon-tests" groups="pdk-arsp-ag-sot,pdk-arsp-common,vendor" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/arm-optimized-routines" path="external/arm-optimized-routines" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/arm-trusted-firmware" path="external/arm-trusted-firmware" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/armnn" path="external/armnn" groups="pdk-arsp-ag-sot,pdk-arsp-common,pdk-lassen" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/auto" path="external/auto" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/automotive-design-compose-protos" path="external/automotive-design-compose-protos" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/aws-crt-java" path="external/aws-crt-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/aws-eventstream-java" path="external/aws-eventstream-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/aws-sdk-java-v2" path="external/aws-sdk-java-v2" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bazelbuild-remote-apis" path="external/bazelbuild-remote-apis" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bc" path="external/bc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bcc" path="external/bcc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/blktrace" path="external/blktrace" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/boringssl" path="external/boringssl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bpftool" path="external/bpftool" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/brotli" path="external/brotli" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bsdiff" path="external/bsdiff" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/bzip2" path="external/bzip2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cairo" path="external/cairo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/caliper" path="external/caliper" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/capstone" path="external/capstone" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cblas" path="external/cblas" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cbor-java" path="external/cbor-java" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/chromium-crossbench" path="external/chromium-crossbench" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/chromium-trace" path="external/chromium-trace" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/chromium-web-tests" path="external/chromium-web-tests" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/chromiumos-config" path="external/chromiumos-config" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/clang" path="external/clang" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cldr" path="external/cldr" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/clpeak" path="external/clpeak" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/clspv" path="external/clspv" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/clvk" path="external/clvk" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cn-cbor" path="external/cn-cbor" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/compiler-rt" path="external/compiler-rt" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/connectedappssdk" path="external/connectedappssdk" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/conscrypt" path="external/conscrypt" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/coreboot" path="external/coreboot" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cpu_features" path="external/cpu_features" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cpuinfo" path="external/cpuinfo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/cronet" path="external/cronet" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/crosvm" path="external/crosvm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/curl" path="external/curl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dagger2" path="external/dagger2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/deqp" path="external/deqp" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/deqp-deps/SPIRV-Headers" path="external/deqp-deps/SPIRV-Headers" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/deqp-deps/SPIRV-Tools" path="external/deqp-deps/SPIRV-Tools" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/deqp-deps/amber" path="external/deqp-deps/amber" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/deqp-deps/glslang" path="external/deqp-deps/glslang" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dexmaker" path="external/dexmaker" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dlmalloc" path="external/dlmalloc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dnsmasq" path="external/dnsmasq" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/doclava" path="external/doclava" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dokka" path="external/dokka" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/double-conversion" path="external/double-conversion" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/downloader" path="external/downloader" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/drm_hwcomposer" path="external/drm_hwcomposer" groups="drm_hwcomposer,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/dynamic_depth" path="external/dynamic_depth" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/easymock" path="external/easymock" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/eigen" path="external/eigen" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/elfutils" path="external/elfutils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/emboss" path="external/emboss" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/emma" path="external/emma" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/epson-inkjet-printer-escpr" path="external/epson-inkjet-printer-escpr" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/erofs-utils" path="external/erofs-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/error_prone" path="external/error_prone" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/escapevelocity" path="external/escapevelocity" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ethtool" path="external/ethtool" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/exoplayer" path="external/exoplayer" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/expat" path="external/expat" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/f2fs-tools" path="external/f2fs-tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/failsafe" path="external/failsafe" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fastrpc" path="external/fastrpc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fdlibm" path="external/fdlibm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fec" path="external/fec" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/federated-compute" path="external/federated-compute" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fft2d" path="external/fft2d" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fhir/spec/r4" path="external/fhir/spec/r4" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fio" path="external/fio" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/firebase-messaging" path="external/firebase-messaging" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/flac" path="external/flac" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/flashrom" path="external/flashrom" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/flatbuffers" path="external/flatbuffers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fmtlib" path="external/fmtlib" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fonttools" path="external/fonttools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/freetype" path="external/freetype" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fsck_msdos" path="external/fsck_msdos" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/fsverity-utils" path="external/fsverity-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gemmlowp" path="external/gemmlowp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/geojson-jackson" path="external/geojson-jackson" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/geonames" path="external/geonames" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gflags" path="external/gflags" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/giflib" path="external/giflib" groups="pdk,qcom_msm8x26" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/glide" path="external/glide" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gmmlib" path="external/gmmlib" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/go-cmp" path="external/go-cmp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/golang-protobuf" path="external/golang-protobuf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-auth-library-java" path="external/google-auth-library-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-benchmark" path="external/google-benchmark" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-breakpad" path="external/google-breakpad" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-cloud-java" path="external/google-cloud-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/arbutus-slab" path="external/google-fonts/arbutus-slab" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/arvo" path="external/google-fonts/arvo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/barlow" path="external/google-fonts/barlow" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/big-shoulders-text" path="external/google-fonts/big-shoulders-text" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/carrois-gothic-sc" path="external/google-fonts/carrois-gothic-sc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/coming-soon" path="external/google-fonts/coming-soon" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/cutive-mono" path="external/google-fonts/cutive-mono" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/dancing-script" path="external/google-fonts/dancing-script" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/fraunces" path="external/google-fonts/fraunces" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/karla" path="external/google-fonts/karla" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/lato" path="external/google-fonts/lato" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/lustria" path="external/google-fonts/lustria" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/rubik" path="external/google-fonts/rubik" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/source-sans-pro" path="external/google-fonts/source-sans-pro" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fonts/zilla-slab" path="external/google-fonts/zilla-slab" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-fruit" path="external/google-fruit" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-highway" path="external/google-highway" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-java-format" path="external/google-java-format" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/google-smali" path="external/google-smali" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/googleapis" path="external/googleapis" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/googletest" path="external/googletest" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/grpc-grpc" path="external/grpc-grpc" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/grpc-grpc-java" path="external/grpc-grpc-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gsc-utils" path="external/gsc-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gson" path="external/gson" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gturri-aXMLRPC" path="external/gturri-aXMLRPC" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gturri-jISO8601" path="external/gturri-jISO8601" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/guava" path="external/guava" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/guice" path="external/guice" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/gwp_asan" path="external/gwp_asan" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/hafnium" path="external/hafnium" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/hamcrest" path="external/hamcrest" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" groups="pdk,qcom_msm8x26" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/hplip" path="external/hplip" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/hyphenation-patterns" path="external/hyphenation-patterns" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iamf_tools" path="external/iamf_tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/icing" path="external/icing" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/icu" path="external/icu" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/igt-gpu-tools" path="external/igt-gpu-tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/image_io" path="external/image_io" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ims" path="external/ims" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/intel-pmt-metadata" path="external/intel-pmt-metadata" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iperf3" path="external/iperf3" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iproute2" path="external/iproute2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iptables" path="external/iptables" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iputils" path="external/iputils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/iw" path="external/iw" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jackson-annotations" path="external/jackson-annotations" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jackson-core" path="external/jackson-core" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jackson-databind" path="external/jackson-databind" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jacoco" path="external/jacoco" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jakarta.inject" path="external/jakarta.inject" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jarjar" path="external/jarjar" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/java-diff-utils" path="external/java-diff-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/javaparser" path="external/javaparser" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/javapoet" path="external/javapoet" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/javasqlite" path="external/javasqlite" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/javassist" path="external/javassist" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jazzer-api" path="external/jazzer-api" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jcommander" path="external/jcommander" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jctools" path="external/jctools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jemalloc_new" path="external/jemalloc_new" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jetpack-camera-app" path="external/jetpack-camera-app" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jimfs" path="external/jimfs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jipp" path="external/jipp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jline" path="external/jline" groups="pdk,pdk-fs,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jmustache" path="external/jmustache" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsilver" path="external/jsilver" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsmn" path="external/jsmn" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/json-schema-validator" path="external/json-schema-validator" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsoncpp" path="external/jsoncpp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsoup" path="external/jsoup" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jspecify" path="external/jspecify" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsr305" path="external/jsr305" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jsr330" path="external/jsr330" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/junit" path="external/junit" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/junit-params" path="external/junit-params" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/jxmpp" path="external/jxmpp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kernel-headers" path="external/kernel-headers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/keyattestation" path="external/keyattestation" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kmod" path="external/kmod" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlin-compose-compiler" path="external/kotlin-compose-compiler" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlin.metadata" path="external/kotlin.metadata" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinc" path="external/kotlinc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinpoet" path="external/kotlinpoet" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinx.atomicfu" path="external/kotlinx.atomicfu" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinx.coroutines" path="external/kotlinx.coroutines" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinx.metadata" path="external/kotlinx.metadata" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/kotlinx.serialization" path="external/kotlinx.serialization" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ksoap2" path="external/ksoap2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ksp" path="external/ksp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ktfmt" path="external/ktfmt" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/leakcanary2" path="external/leakcanary2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/leveldb" path="external/leveldb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/disarm" path="external/lfi/disarm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/fadec" path="external/lfi/fadec" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/lfi-bind" path="external/lfi/lfi-bind" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/lfi-runtime" path="external/lfi/lfi-runtime" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/lfi-verifier" path="external/lfi/lfi-verifier" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/rlbox" path="external/lfi/rlbox" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lfi/rlbox-lfi" path="external/lfi/rlbox-lfi" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libaom" path="external/libaom" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libavc" path="external/libavc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libbackup" path="external/libbackup" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libbpf" path="external/libbpf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libbrillo" path="external/libbrillo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libburnia/libburn" path="external/libburnia/libburn" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libburnia/libisoburn" path="external/libburnia/libisoburn" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libburnia/libisofs" path="external/libburnia/libisofs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcamera" path="external/libcamera" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcap" path="external/libcap" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcap-ng" path="external/libcap-ng" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libchrome" path="external/libchrome" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libchrome-gestures" path="external/libchrome-gestures" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libconfig" path="external/libconfig" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcups" path="external/libcups" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcupsfilters" path="external/libcupsfilters" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcxx" path="external/libcxx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libcxxabi" path="external/libcxxabi" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libdav1d" path="external/libdav1d" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libdisplay-info" path="external/libdisplay-info" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libdivsufsort" path="external/libdivsufsort" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libdrm" path="external/libdrm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libese" path="external/libese" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libevent" path="external/libevent" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libexif" path="external/libexif" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libffi" path="external/libffi" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libfuse" path="external/libfuse" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libgav1" path="external/libgav1" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libgsm" path="external/libgsm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libhevc" path="external/libhevc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libjpeg-turbo" path="external/libjpeg-turbo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libkmsxx" path="external/libkmsxx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/liblc3" path="external/liblc3" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libldac" path="external/libldac" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libmnl" path="external/libmnl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libmonet" path="external/libmonet" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libmpeg2" path="external/libmpeg2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libnetfilter_conntrack" path="external/libnetfilter_conntrack" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libnfnetlink" path="external/libnfnetlink" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libnl" path="external/libnl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libogg" path="external/libogg" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libopenapv" path="external/libopenapv" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libopus" path="external/libopus" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libpalmrejection" path="external/libpalmrejection" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libpcap" path="external/libpcap" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libpciaccess" path="external/libpciaccess" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libphonenumber" path="external/libphonenumber" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libpng" path="external/libpng" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libppd" path="external/libppd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libprotobuf-mutator" path="external/libprotobuf-mutator" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libsrtp2" path="external/libsrtp2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libtextclassifier" path="external/libtextclassifier" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libtraceevent" path="external/libtraceevent" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libtracefs" path="external/libtracefs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libudev-zero" path="external/libudev-zero" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libultrahdr" path="external/libultrahdr" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/liburing" path="external/liburing" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libusb" path="external/libusb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libutf" path="external/libutf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libva" path="external/libva" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libva-utils" path="external/libva-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libvpx" path="external/libvpx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libwebm" path="external/libwebm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libwebsockets" path="external/libwebsockets" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libxaac" path="external/libxaac" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libxkbcommon" path="external/libxkbcommon" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libxml2" path="external/libxml2" groups="libxml2,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libyaml" path="external/libyaml" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/libyuv" path="external/libyuv" groups="libyuv,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/licenseclassifier" path="external/licenseclassifier" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/linux-firmware" path="external/linux-firmware" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/linux-kselftest" path="external/linux-kselftest" groups="pdk,vts" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/llvm" path="external/llvm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/llvm-libc" path="external/llvm-libc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lottie" path="external/lottie" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ltp" path="external/ltp" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lua" path="external/lua" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lz4" path="external/lz4" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/lzma" path="external/lzma" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/marisa-trie" path="external/marisa-trie" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mbedtls" path="external/mbedtls" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mdnsresponder" path="external/mdnsresponder" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mesa3d" path="external/mesa3d" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mime-support" path="external/mime-support" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/minidns" path="external/minidns" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/minigbm" path="external/minigbm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/minijail" path="external/minijail" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ml_dtypes" path="external/ml_dtypes" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mobile-data-download" path="external/mobile-data-download" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mobly-bundled-snippets" path="external/mobly-bundled-snippets" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mobly-snippet-lib" path="external/mobly-snippet-lib" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mockftpserver" path="external/mockftpserver" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mockito" path="external/mockito" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mockito-kotlin" path="external/mockito-kotlin" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mockwebserver" path="external/mockwebserver" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/modp_b64" path="external/modp_b64" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/moshi" path="external/moshi" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mp4parser" path="external/mp4parser" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mpdecimal" path="external/mpdecimal" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ms-tpm-20-ref" path="external/ms-tpm-20-ref" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/mtools" path="external/mtools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/musl" path="external/musl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nanohttpd" path="external/nanohttpd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nanopb-c" path="external/nanopb-c" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/naver-fonts" path="external/naver-fonts" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/neon_2_sse" path="external/neon_2_sse" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/neven" path="external/neven" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/newfs_msdos" path="external/newfs_msdos" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nist-pkits" path="external/nist-pkits" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nist-sip" path="external/nist-sip" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nos/host/generic" path="external/nos/host/generic" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/noto-fonts" path="external/noto-fonts" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/nullaway" path="external/nullaway" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/oauth" path="external/oauth" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/obex" path="external/obex" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/objenesis" path="external/objenesis" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/oboe" path="external/oboe" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/obstack" path="external/obstack" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/oj-libjdwp" path="external/oj-libjdwp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/okhttp" path="external/okhttp" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/okio" path="external/okio" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/one-true-awk" path="external/one-true-awk" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/open-dice" path="external/open-dice" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/opencensus-java" path="external/opencensus-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/opencl/llvm-project" path="external/opencl/llvm-project" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/openscreen" path="external/openscreen" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/openthread" path="external/openthread" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/openwrt-prebuilts" path="external/openwrt-prebuilts" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/openxr-sdk" path="external/openxr-sdk" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/opus-experimental" path="external/opus-experimental" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ot-br-posix" path="external/ot-br-posix" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ow2-asm" path="external/ow2-asm" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/owasp/java-encoder" path="external/owasp/java-encoder" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/owasp/sanitizer" path="external/owasp/sanitizer" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pandora/mmi2grpc" path="external/pandora/mmi2grpc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/parameter-framework" path="external/parameter-framework" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pciutils" path="external/pciutils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pcollections" path="external/pcollections" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pcre" path="external/pcre" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pdfium" path="external/pdfium" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/perfetto" path="external/perfetto" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/perfmark" path="external/perfmark" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pffft" path="external/pffft" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/piex" path="external/piex" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pigweed" path="external/pigweed" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pixman" path="external/pixman" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ply" path="external/ply" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pogreb" path="external/pogreb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/private-join-and-compute" path="external/private-join-and-compute" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/protobuf" path="external/protobuf" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/pthreadpool" path="external/pthreadpool" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/puffin" path="external/puffin" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/absl-py" path="external/python/absl-py" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/apitools" path="external/python/apitools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/asn1crypto" path="external/python/asn1crypto" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/bumble" path="external/python/bumble" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/cachetools" path="external/python/cachetools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/cpplint" path="external/python/cpplint" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/cpython3" path="external/python/cpython3" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/dateutil" path="external/python/dateutil" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/enum34" path="external/python/enum34" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/fdt" path="external/python/fdt" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/google-api-python-client" path="external/python/google-api-python-client" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/google-auth-library-python" path="external/python/google-auth-library-python" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/httplib2" path="external/python/httplib2" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/ipaddress" path="external/python/ipaddress" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/jinja" path="external/python/jinja" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/mako" path="external/python/mako" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/markupsafe" path="external/python/markupsafe" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/mobly" path="external/python/mobly" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/oauth2client" path="external/python/oauth2client" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/parse_type" path="external/python/parse_type" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pexpect" path="external/python/pexpect" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/portpicker" path="external/python/portpicker" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/ptyprocess" path="external/python/ptyprocess" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyasn1" path="external/python/pyasn1" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyasn1-modules" path="external/python/pyasn1-modules" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pycparser" path="external/python/pycparser" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyee" path="external/python/pyee" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyfakefs" path="external/python/pyfakefs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyserial" path="external/python/pyserial" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/python-api-core" path="external/python/python-api-core" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/pyyaml" path="external/python/pyyaml" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/rsa" path="external/python/rsa" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/six" path="external/python/six" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/snippet-uiautomator" path="external/python/snippet-uiautomator" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/timeout-decorator" path="external/python/timeout-decorator" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/typing" path="external/python/typing" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/typing_extensions" path="external/python/typing_extensions" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/uritemplates" path="external/python/uritemplates" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/python/watchdog" path="external/python/watchdog" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/qdl" path="external/qdl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/qpdf" path="external/qpdf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rappor" path="external/rappor" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/regex-re2" path="external/regex-re2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/renderscript-intrinsics-replacement-toolkit" path="external/renderscript-intrinsics-replacement-toolkit" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/replicaisland" path="external/replicaisland" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rmi4utils" path="external/rmi4utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rnnoise" path="external/rnnoise" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/robolectric" path="external/robolectric" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/roboto-flex-fonts" path="external/roboto-flex-fonts" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/roboto-fonts" path="external/roboto-fonts" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/roboto-mono" path="external/roboto-mono" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rootdev" path="external/rootdev" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/android-crates-io" path="external/rust/android-crates-io" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/autocxx" path="external/rust/autocxx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/beto-rust" path="external/rust/beto-rust" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/crabbyavif" path="external/rust/crabbyavif" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/crates/openssl" path="external/rust/crates/openssl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/crates/v4l2r" path="external/rust/crates/v4l2r" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/crates/vhost-device-vsock" path="external/rust/crates/vhost-device-vsock" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/cros-libva" path="external/rust/cros-libva" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/cxx" path="external/rust/cxx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/ninja-to-soong" path="external/rust/ninja-to-soong" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/pica" path="external/rust/pica" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/rust/rutabaga_gfx" path="external/rust/rutabaga_gfx" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ruy" path="external/ruy" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/s2-geometry-library-java" path="external/s2-geometry-library-java" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sandboxed-api" path="external/sandboxed-api" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/scapy" path="external/scapy" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/scrypt" path="external/scrypt" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/scudo" path="external/scudo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sdk-platform-java" path="external/sdk-platform-java" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sdv/vsomeip" path="external/sdv/vsomeip" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/seccomp-tests" path="external/seccomp-tests" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/selinux" path="external/selinux" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/setfilters" path="external/setfilters" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/setupcompat" path="external/setupcompat" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/setupdesign" path="external/setupdesign" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sg3_utils" path="external/sg3_utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/shaderc/spirv-headers" path="external/shaderc/spirv-headers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/shflags" path="external/shflags" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/skia" path="external/skia" groups="pdk,qcom_msm8x26" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sl4a" path="external/sl4a" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/slf4j" path="external/slf4j" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/smack" path="external/smack" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/snakeyaml" path="external/snakeyaml" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sonic" path="external/sonic" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sonivox" path="external/sonivox" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/spdx-tools" path="external/spdx-tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/speex" path="external/speex" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/sqlite" path="external/sqlite" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/squashfs-tools" path="external/squashfs-tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/starlark-go" path="external/starlark-go" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/stg" path="external/stg" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/strace" path="external/strace" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/stressapptest" path="external/stressapptest" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/subsampling-scale-image-view" path="external/subsampling-scale-image-view" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/swiftshader" path="external/swiftshader" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tagsoup" path="external/tagsoup" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tcpdump" path="external/tcpdump" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tensorflow" path="external/tensorflow" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/testng" path="external/testng" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tflite-support" path="external/tflite-support" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/threetenbp" path="external/threetenbp" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/timezone-boundary-builder" path="external/timezone-boundary-builder" groups="pdk" clone-depth="2" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tink" path="external/tink" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tink-java" path="external/tink-java" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tinyalsa" path="external/tinyalsa" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tinyalsa_new" path="external/tinyalsa_new" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tinyxml" path="external/tinyxml" revision="refs/tags/android-11.0.0_r46" groups="pdk" />
+  <project name="platform/external/tinyxml2" path="external/tinyxml2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/toolchain-utils" path="external/toolchain-utils" groups="pdk-arsp-ag-sot,pdk-arsp-common" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/toybox" path="external/toybox" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tpm2-tss" path="external/tpm2-tss" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/trace-cmd" path="external/trace-cmd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/tremolo" path="external/tremolo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/truth" path="external/truth" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/turbine" path="external/turbine" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/ublksrv" path="external/ublksrv" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/unicode" path="external/unicode" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/usb-ids" path="external/usb-ids" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/uwb" path="external/uwb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/v4l-utils" path="external/v4l-utils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/v4l2_codec2" path="external/v4l2_codec2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vboot_reference" path="external/vboot_reference" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/virtio-media" path="external/virtio-media" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vixl" path="external/vixl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vkoverhead" path="external/vkoverhead" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vogar" path="external/vogar" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/volley" path="external/volley" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vulkan-headers" path="external/vulkan-headers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/vulkan-validation-layers" path="external/vulkan-validation-layers" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/walt" path="external/walt" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wayland" path="external/wayland" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wayland-protocols" path="external/wayland-protocols" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/webp" path="external/webp" groups="pdk,qcom_msm8x26" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/webrtc" path="external/webrtc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wireless-regdb" path="external/wireless-regdb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wmediumd" path="external/wmediumd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wpa_supplicant_8" path="external/wpa_supplicant_8" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wuffs-mirror-release-c" path="external/wuffs-mirror-release-c" groups="pdk,qcom_msm8x26" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/wycheproof" path="external/wycheproof" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/xmp_toolkit" path="external/xmp_toolkit" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/xz-embedded" path="external/xz-embedded" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/xz-java" path="external/xz-java" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/yapf" path="external/yapf" groups="pdk,projectarch,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/zlib" path="external/zlib" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/zopfli" path="external/zopfli" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/zucchini" path="external/zucchini" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/external/zxing" path="external/zxing" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/compile/libbcc" path="frameworks/compile/libbcc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/compile/mclinker" path="frameworks/compile/mclinker" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/compile/slang" path="frameworks/compile/slang" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/ex" path="frameworks/ex" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/hardware/interfaces" path="frameworks/hardware/interfaces" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/layoutlib" path="frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/binary_translation" path="frameworks/libs/binary_translation" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/gsma_services" path="frameworks/libs/gsma_services" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/modules-utils" path="frameworks/libs/modules-utils" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/native_bridge_support" path="frameworks/libs/native_bridge_support" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/service_entitlement" path="frameworks/libs/service_entitlement" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/libs/systemui" path="frameworks/libs/systemui" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/minikin" path="frameworks/minikin" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/multidex" path="frameworks/multidex" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/bitmap" path="frameworks/opt/bitmap" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/calendar" path="frameworks/opt/calendar" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/car/services" path="frameworks/opt/car/services" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/car/setupwizard" path="frameworks/opt/car/setupwizard" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/chips" path="frameworks/opt/chips" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/colorpicker" path="frameworks/opt/colorpicker" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/localepicker" path="frameworks/opt/localepicker" groups="pdk-arsp-ag-sot,pdk-arsp-common" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/net/ims" path="frameworks/opt/net/ims" groups="frameworks_ims,pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/net/voip" path="frameworks/opt/net/voip" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/net/wifi" path="frameworks/opt/net/wifi" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/photoviewer" path="frameworks/opt/photoviewer" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/setupwizard" path="frameworks/opt/setupwizard" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/timezonepicker" path="frameworks/opt/timezonepicker" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/tv/tvsystem" path="frameworks/opt/tv/tvsystem" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/opt/vcard" path="frameworks/opt/vcard" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/proto_logging" path="frameworks/proto_logging" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/rs" path="frameworks/rs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/wilhelm" path="frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/broadcom/wlan" path="hardware/broadcom/wlan" groups="broadcom_wlan,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/google/apf" path="hardware/google/apf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/google/av" path="hardware/google/av" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/google/camera" path="hardware/google/camera" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/google/gfxstream" path="hardware/google/gfxstream" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/google/interfaces" path="hardware/google/interfaces" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/invensense" path="hardware/invensense" groups="invensense,pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/libhardware_legacy" path="hardware/libhardware_legacy" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/nxp/keymint" path="hardware/nxp/keymint" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/nxp/nxp_mcu_loader" path="hardware/nxp/nxp_mcu_loader" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/nxp/secure_element" path="hardware/nxp/secure_element" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/nxp/uwb" path="hardware/nxp/uwb" groups="pdk-arsp-ag-sot,pdk-arsp-common" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/nxp/weaver" path="hardware/nxp/weaver" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/ril" path="hardware/ril" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/sdv/interfaces" path="hardware/sdv/interfaces" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/st/secure_element" path="hardware/st/secure_element" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/st/secure_element2" path="hardware/st/secure_element2" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/synaptics/wlan" path="hardware/synaptics/wlan" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/telink/atv/refDesignRcu" path="hardware/telink/atv/refDesignRcu" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/hardware/ti/am57x" path="hardware/ti/am57x" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/libcore" path="libcore" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/libnativehelper" path="libnativehelper" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/AvatarPicker" path="packages/apps/AvatarPicker" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/BasicSmsReceiver" path="packages/apps/BasicSmsReceiver" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Camera2" path="packages/apps/Camera2" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/CalendarPrebuilt" path="packages/apps/Car/CalendarPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Cluster" path="packages/apps/Car/Cluster" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/DataSubscriptionReference" path="packages/apps/Car/DataSubscriptionReference" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/DebuggingRestrictionController" path="packages/apps/Car/DebuggingRestrictionController" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/DialerPrebuilt" path="packages/apps/Car/DialerPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/DriverUIPrebuilt" path="packages/apps/Car/DriverUIPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/LatinIME" path="packages/apps/Car/LatinIME" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Launcher" path="packages/apps/Car/Launcher" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/LinkViewer" path="packages/apps/Car/LinkViewer" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/LocalMediaPlayer" path="packages/apps/Car/LocalMediaPlayer" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/MediaPrebuilt" path="packages/apps/Car/MediaPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/MessengerPrebuilt" path="packages/apps/Car/MessengerPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Notification" path="packages/apps/Car/Notification" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Provision" path="packages/apps/Car/Provision" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/RadioPrebuilt" path="packages/apps/Car/RadioPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/References" path="packages/apps/Car/References" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/RotaryController" path="packages/apps/Car/RotaryController" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/RotaryImePrebuilt" path="packages/apps/Car/RotaryImePrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Settings" path="packages/apps/Car/Settings" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/SettingsIntelligence" path="packages/apps/Car/SettingsIntelligence" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/SystemUI" path="packages/apps/Car/SystemUI" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/SystemUpdater" path="packages/apps/Car/SystemUpdater" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/Templates" path="packages/apps/Car/Templates" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/TemplatesPrebuilt" path="packages/apps/Car/TemplatesPrebuilt" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/VoiceControl" path="packages/apps/Car/VoiceControl" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Car/systemlibs" path="packages/apps/Car/systemlibs" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/CarrierConfig" path="packages/apps/CarrierConfig" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/CellBroadcastReceiver" path="packages/apps/CellBroadcastReceiver" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/CertInstaller" path="packages/apps/CertInstaller" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/ContactsPicker" path="packages/apps/ContactsPicker" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/DeviceDiagnostics" path="packages/apps/DeviceDiagnostics" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/EyeDropper" path="packages/apps/EyeDropper" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/HTMLViewer" path="packages/apps/HTMLViewer" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/ImsServiceEntitlement" path="packages/apps/ImsServiceEntitlement" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/KeyChain" path="packages/apps/KeyChain" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Login" path="packages/apps/Login" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/ManagedProvisioning" path="packages/apps/ManagedProvisioning" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Multiuser" path="packages/apps/Multiuser" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Music" path="packages/apps/Music" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/MusicFX" path="packages/apps/MusicFX" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/OnDeviceAppPrediction" path="packages/apps/OnDeviceAppPrediction" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/PersonalContext" path="packages/apps/PersonalContext" groups="pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/PhoneCommon" path="packages/apps/PhoneCommon" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/PrivateSpace" path="packages/apps/PrivateSpace" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/SafetyRegulatoryInfo" path="packages/apps/SafetyRegulatoryInfo" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/SampleLocationAttribution" path="packages/apps/SampleLocationAttribution" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/SecureElement" path="packages/apps/SecureElement" groups="apps_se,pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/SettingsIntelligence" path="packages/apps/SettingsIntelligence" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Stk" path="packages/apps/Stk" groups="apps_stk,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/SystemUIGo" path="packages/apps/SystemUIGo" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/TV" path="packages/apps/TV" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Test/connectivity" path="packages/apps/Test/connectivity" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/Traceur" path="packages/apps/Traceur" groups="pdk-cw-tvc,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/TvFeedbackConsent" path="packages/apps/TvFeedbackConsent" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/TvSettings" path="packages/apps/TvSettings" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/TvSystemUI" path="packages/apps/TvSystemUI" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/UniversalMediaPlayer" path="packages/apps/UniversalMediaPlayer" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/VirtualGamepad" path="packages/apps/VirtualGamepad" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/apps/WallpaperPicker2" path="packages/apps/WallpaperPicker2" groups="pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/inputmethods/LatinIME" path="packages/inputmethods/LatinIME" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/inputmethods/LeanbackIME" path="packages/inputmethods/LeanbackIME" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/AdServices" path="packages/modules/AdServices" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/AppSearch" path="packages/modules/AppSearch" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ArtPrebuilt" path="packages/modules/ArtPrebuilt" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/CaptivePortalLogin" path="packages/modules/CaptivePortalLogin" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/CellBroadcastService" path="packages/modules/CellBroadcastService" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ConfigInfrastructure" path="packages/modules/ConfigInfrastructure" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/CrashRecovery" path="packages/modules/CrashRecovery" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/DeviceLock" path="packages/modules/DeviceLock" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/DnsResolver" path="packages/modules/DnsResolver" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ExtServices" path="packages/modules/ExtServices" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/GenericBootstrappingArchitecture" path="packages/modules/GenericBootstrappingArchitecture" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/GeoTZ" path="packages/modules/GeoTZ" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Gki" path="packages/modules/Gki" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/HealthFitness" path="packages/modules/HealthFitness" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/IPsec" path="packages/modules/IPsec" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ImsMedia" path="packages/modules/ImsMedia" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ImsStack" path="packages/modules/ImsStack" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/IntentResolver" path="packages/modules/IntentResolver" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Media" path="packages/modules/Media" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ModuleMetadata" path="packages/modules/ModuleMetadata" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/NetworkStack" path="packages/modules/NetworkStack" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/NeuralNetworks" path="packages/modules/NeuralNetworks" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Nfc" path="packages/modules/Nfc" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/NpuManager" path="packages/modules/NpuManager" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/OnDevicePersonalization" path="packages/modules/OnDevicePersonalization" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Profiling" path="packages/modules/Profiling" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/RemoteKeyProvisioning" path="packages/modules/RemoteKeyProvisioning" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/RuntimeI18n" path="packages/modules/RuntimeI18n" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Scheduling" path="packages/modules/Scheduling" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/SdkExtensions" path="packages/modules/SdkExtensions" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/StatsD" path="packages/modules/StatsD" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Telecom" path="packages/modules/Telecom" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Telephony" path="packages/modules/Telephony" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/ThreadNetwork" path="packages/modules/ThreadNetwork" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/UprobeStats" path="packages/modules/UprobeStats" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Uwb" path="packages/modules/Uwb" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/Virtualization" path="packages/modules/Virtualization" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/WebApp" path="packages/modules/WebApp" groups="pdk-cw-tvc,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/WebViewBootstrap" path="packages/modules/WebViewBootstrap" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/common" path="packages/modules/common" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/desktop/Serviceability" path="packages/modules/desktop/Serviceability" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/modules/vndk" path="packages/modules/vndk" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/BlockedNumberProvider" path="packages/providers/BlockedNumberProvider" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/BookmarkProvider" path="packages/providers/BookmarkProvider" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/CalendarProvider" path="packages/providers/CalendarProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/CallLogProvider" path="packages/providers/CallLogProvider" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/ContactsKeysProvider" path="packages/providers/ContactsKeysProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/ContactsProvider" path="packages/providers/ContactsProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/DownloadProvider" path="packages/providers/DownloadProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/MediaProvider" path="packages/providers/MediaProvider" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/PartnerBookmarksProvider" path="packages/providers/PartnerBookmarksProvider" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/TelephonyProvider" path="packages/providers/TelephonyProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/TvProvider" path="packages/providers/TvProvider" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/providers/UserDictionaryProvider" path="packages/providers/UserDictionaryProvider" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/screensavers/Basic" path="packages/screensavers/Basic" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/screensavers/PhotoTable" path="packages/screensavers/PhotoTable" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/AlternativeNetworkAccess" path="packages/services/AlternativeNetworkAccess" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/BuiltInPrintService" path="packages/services/BuiltInPrintService" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/Car" path="packages/services/Car" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/CrossDeviceSync" path="packages/services/CrossDeviceSync" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/DroidfoodAttestationFixer" path="packages/services/DroidfoodAttestationFixer" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/Iwlan" path="packages/services/Iwlan" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/Mms" path="packages/services/Mms" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/Mtp" path="packages/services/Mtp" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/QualifiedNetworksService" path="packages/services/QualifiedNetworksService" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/Telephony" path="packages/services/Telephony" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/services/display_safety" path="packages/services/display_safety" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/packages/wallpapers/LivePicker" path="packages/wallpapers/LivePicker" groups="pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/pdk" path="pdk" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/platform_testing" path="platform_testing" groups="cts,pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/abi-dumps/ndk" path="prebuilts/abi-dumps/ndk" groups="pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/abi-dumps/platform" path="prebuilts/abi-dumps/platform" groups="pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/abi-dumps/vndk" path="prebuilts/abi-dumps/vndk" groups="pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/android-emulator" path="prebuilts/android-emulator" groups="pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/asuite" path="prebuilts/asuite" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/bazel/common" path="prebuilts/bazel/common" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/build-tools" path="prebuilts/build-tools" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/bundletool" path="prebuilts/bundletool" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/checkcolor" path="prebuilts/checkcolor" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/checkstyle" path="prebuilts/checkstyle" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/cipd" path="prebuilts/cipd" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/clang-tools" path="prebuilts/clang-tools" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/clang/host/linux-x86" path="prebuilts/clang/host/linux-x86" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/cmake/linux-x86" path="prebuilts/cmake/linux-x86" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/cmdline-tools" path="prebuilts/cmdline-tools" groups="pdk-cw-fs,pdk-fs,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/devtools" path="prebuilts/devtools" groups="pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8" groups="linux,pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" groups="pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/go/linux-x86" path="prebuilts/go/linux-x86" groups="linux,pdk,tradefed" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/gradle-plugin" path="prebuilts/gradle-plugin" groups="pdk,pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/jdk/jdk21" path="prebuilts/jdk/jdk21" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/jdk/jdk25" path="prebuilts/jdk/jdk25" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/jdk/jdk8" path="prebuilts/jdk/jdk8" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/ktlint" path="prebuilts/ktlint" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/manifest-merger" path="prebuilts/manifest-merger" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/maven_repo/bumptech" path="prebuilts/maven_repo/bumptech" groups="pdk-cw-fs,pdk-fs" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/misc" path="prebuilts/misc" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/AdServices" path="prebuilts/module_sdk/AdServices" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/AppSearch" path="prebuilts/module_sdk/AppSearch" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Bluetooth" path="prebuilts/module_sdk/Bluetooth" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/ConfigInfrastructure" path="prebuilts/module_sdk/ConfigInfrastructure" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Connectivity" path="prebuilts/module_sdk/Connectivity" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/CrashRecovery" path="prebuilts/module_sdk/CrashRecovery" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/DeviceLock" path="prebuilts/module_sdk/DeviceLock" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/HealthFitness" path="prebuilts/module_sdk/HealthFitness" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/IPsec" path="prebuilts/module_sdk/IPsec" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Media" path="prebuilts/module_sdk/Media" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/MediaProvider" path="prebuilts/module_sdk/MediaProvider" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Nfc" path="prebuilts/module_sdk/Nfc" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/NpuManager" path="prebuilts/module_sdk/NpuManager" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/OnDevicePersonalization" path="prebuilts/module_sdk/OnDevicePersonalization" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Permission" path="prebuilts/module_sdk/Permission" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Profiling" path="prebuilts/module_sdk/Profiling" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/RemoteKeyProvisioning" path="prebuilts/module_sdk/RemoteKeyProvisioning" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Scheduling" path="prebuilts/module_sdk/Scheduling" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/SdkExtensions" path="prebuilts/module_sdk/SdkExtensions" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/StatsD" path="prebuilts/module_sdk/StatsD" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Telephony" path="prebuilts/module_sdk/Telephony" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/UprobeStats" path="prebuilts/module_sdk/UprobeStats" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Uwb" path="prebuilts/module_sdk/Uwb" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/WebApp" path="prebuilts/module_sdk/WebApp" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/WebViewBootstrap" path="prebuilts/module_sdk/WebViewBootstrap" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/Wifi" path="prebuilts/module_sdk/Wifi" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/art" path="prebuilts/module_sdk/art" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/module_sdk/conscrypt" path="prebuilts/module_sdk/conscrypt" groups="pdk-arsp-ag-sot,pdk-arsp-common" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/ndk" path="prebuilts/ndk" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/qemu-kernel" path="prebuilts/qemu-kernel" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/r8" path="prebuilts/r8" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/remoteexecution-client" path="prebuilts/remoteexecution-client" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/runtime" path="prebuilts/runtime" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/rust" path="prebuilts/rust" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/rust-toolchain/linux-musl-x86" path="prebuilts/rust-toolchain/linux-musl-x86" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/rust-toolchain/linux-x86" path="prebuilts/rust-toolchain/linux-x86" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/sdk" path="prebuilts/sdk" groups="pdk,sysui-studio" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/siso" path="prebuilts/siso" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/tools" path="prebuilts/tools" groups="pdk,sysui-studio,tools" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/vndk/v31" path="prebuilts/vndk/v31" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/vndk/v32" path="prebuilts/vndk/v32" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/vndk/v33" path="prebuilts/vndk/v33" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/prebuilts/vndk/v34" path="prebuilts/vndk/v34" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/sdk" path="sdk" groups="pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/acpi/bert_collector" path="system/acpi/bert_collector" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/apex" path="system/apex" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/authgraph" path="system/authgraph" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/bpfprogs" path="system/bpfprogs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/ca-certificates" path="system/ca-certificates" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/connectivity/wificond" path="system/connectivity/wificond" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/dmesgd" path="system/dmesgd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/fs/casefolding_remover" path="system/fs/casefolding_remover" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/gatekeeper" path="system/gatekeeper" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/gsid" path="system/gsid" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/hardware/interfaces" path="system/hardware/interfaces" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/hwservicemanager" path="system/hwservicemanager" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/incremental_delivery" path="system/incremental_delivery" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/keymaster" path="system/keymaster" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/keymint" path="system/keymint" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/lfi" path="system/lfi" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libartpalette" path="system/libartpalette" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libbase" path="system/libbase" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libcppbor" path="system/libcppbor" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libfmq" path="system/libfmq" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libhidl" path="system/libhidl" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libhwbinder" path="system/libhwbinder" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libprocinfo" path="system/libprocinfo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/librustutils" path="system/librustutils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libskuconfig" path="system/libskuconfig" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libsysprop" path="system/libsysprop" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libueventd-rs" path="system/libueventd-rs" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libufdt" path="system/libufdt" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/liburingutils" path="system/liburingutils" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/libvintf" path="system/libvintf" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/linkerconfig" path="system/linkerconfig" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/amemdiff" path="system/memory/amemdiff" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/guardian" path="system/memory/guardian" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/libdmabufheap" path="system/memory/libdmabufheap" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/libmeminfo" path="system/memory/libmeminfo" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/libmemtrack" path="system/memory/libmemtrack" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/libmemunreachable" path="system/memory/libmemunreachable" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/libwrapfd" path="system/memory/libwrapfd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/lmkd" path="system/memory/lmkd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/memory/mmd" path="system/memory/mmd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/netd" path="system/netd" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/nvram" path="system/nvram" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/secretkeeper" path="system/secretkeeper" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/secure_element" path="system/secure_element" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/see/authmgr" path="system/see/authmgr" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/server_configurable_flags" path="system/server_configurable_flags" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/automotive_services" path="system/software_defined_vehicle/automotive_services" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/common" path="system/software_defined_vehicle/common" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/health_monitor" path="system/software_defined_vehicle/health_monitor" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/lifecycle_management" path="system/software_defined_vehicle/lifecycle_management" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/middleware" path="system/software_defined_vehicle/middleware" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/orchestration" path="system/software_defined_vehicle/orchestration" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/platform" path="system/software_defined_vehicle/platform" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/samples" path="system/software_defined_vehicle/samples" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/sdv_gateway" path="system/software_defined_vehicle/sdv_gateway" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/service_bundles_registry" path="system/software_defined_vehicle/service_bundles_registry" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/some_ip" path="system/software_defined_vehicle/some_ip" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/telemetry" path="system/software_defined_vehicle/telemetry" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/tools" path="system/software_defined_vehicle/tools" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/update_manager" path="system/software_defined_vehicle/update_manager" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/vpm" path="system/software_defined_vehicle/vpm" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/software_defined_vehicle/vsidl" path="system/software_defined_vehicle/vsidl" groups="pdk,swcar" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/teeui" path="system/teeui" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/testing/gtest_extras" path="system/testing/gtest_extras" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/timezone" path="system/timezone" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/tools/aidl" path="system/tools/aidl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/tools/hidl" path="system/tools/hidl" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/tools/mkbootimg" path="system/tools/mkbootimg" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/tools/sysprop" path="system/tools/sysprop" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/tools/xsdc" path="system/tools/xsdc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/unwinding" path="system/unwinding" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/usb" path="system/usb" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/usb_info_tools" path="system/usb_info_tools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/weaver" path="system/weaver" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/system/zygote" path="system/zygote" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/app_compat/csuite" path="test/app_compat/csuite" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/catbox" path="test/catbox" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/cts-root" path="test/cts-root" groups="pdk-arsp-ag-sot,pdk-arsp-common" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/dittosuite" path="test/dittosuite" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/mlts/benchmark" path="test/mlts/benchmark" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/mlts/models" path="test/mlts/models" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/robolectric-extensions" path="test/robolectric-extensions" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/suite_harness" path="test/suite_harness" groups="cts,pdk-cw-fs,pdk-fs" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts" path="test/vts" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/hal" path="test/vts-testcase/hal" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/kernel" path="test/vts-testcase/kernel" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/nbu" path="test/vts-testcase/nbu" groups="pdk,projectarch,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/performance" path="test/vts-testcase/performance" groups="pdk,projectarch,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/security" path="test/vts-testcase/security" groups="pdk,projectarch,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/test/vts-testcase/vndk" path="test/vts-testcase/vndk" groups="pdk,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/aadevtools" path="tools/aadevtools" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/acloud" path="tools/acloud" groups="pdk,projectarch,tools,tradefed,vts" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/apifinder" path="tools/apifinder" groups="pdk,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/apksig" path="tools/apksig" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/apkzlib" path="tools/apkzlib" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/asuite" path="tools/asuite" groups="pdk,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/carrier_settings" path="tools/carrier_settings" groups="tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/content_addressed_storage/prebuilts" path="tools/content_addressed_storage/prebuilts" groups="pdk,tools" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/currysrc" path="tools/currysrc" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/deviceinfra/prebuilts" path="tools/deviceinfra/prebuilts" groups="pdk,tools" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/dexter" path="tools/dexter" groups="pdk-cw-fs,pdk-fs,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/doc_generation" path="tools/doc_generation" groups="pdk,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/external/fat32lib" path="tools/external/fat32lib" groups="tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/external_updater" path="tools/external_updater" groups="tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/lint_checks" path="tools/lint_checks" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/loganalysis" path="tools/loganalysis" groups="nopresubmit,pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/mainline" path="tools/mainline" groups="tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/metalava" path="tools/metalava" groups="pdk,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/ndkports" path="tools/ndkports" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/netsim" path="tools/netsim" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/repohooks" path="tools/repohooks" groups="adt-infra,cts,developers,motodev,pdk,sysui-studio,tools,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/rootcanal" path="tools/rootcanal" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/rr_prebuilt" path="tools/rr_prebuilt" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/security" path="tools/security" groups="pdk,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/strictdeps" path="tools/strictdeps" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/test/connectivity" path="tools/test/connectivity" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/test/desktop/mobly" path="tools/test/desktop/mobly" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/test/mobly_extensions" path="tools/test/mobly_extensions" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/test/mobly_snippets" path="tools/test/mobly_snippets" groups="pdk" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/test/openhst" path="tools/test/openhst" groups="tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/tradefederation" path="tools/tradefederation/core" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/tradefederation/contrib" path="tools/tradefederation/contrib" groups="pdk,tradefed" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/tradefederation/prebuilts" path="tools/tradefederation/prebuilts" groups="pdk,tradefed" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/treble" path="tools/treble" groups="pdk,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/tools/trebuchet" path="tools/trebuchet" groups="cts,pdk,pdk-cw-fs,pdk-fs,tools" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform_bootable_recovery" path="bootable/recovery" remote="uwuAOSP" groups="pdk" revision="74fa68b89b1cf5958859f2433fc197e809d48c84" />
+  <project name="platform_build_blueprint" path="build/blueprint" remote="uwuAOSP" groups="pdk,tradefed" revision="53b3e0e9884fd74fc6852c32643fe4806ba6cf7d" />
+  <project name="platform_build_make" path="build/make" remote="uwuAOSP" groups="pdk,sysui-studio" revision="26d3cef1ed94c5820fb73052fa2a01595a25a9da">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project name="platform_build_soong" path="build/soong" remote="uwuAOSP" groups="pdk,sysui-studio,tradefed" revision="b575972879263b24cf9570eb37d87062669aca1d">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project name="platform_external_leptonica" path="external/leptonica" remote="uwuAOSP" revision="acdc38be8a086683d3eb436d4d641eb32ef1b39a" />
+  <project name="platform_external_llama" path="external/llama" remote="uwuAOSP" revision="20cb9c8c7568c9df1e36a5c2345d8a1c15616264" />
+  <project name="platform_external_llama-generated-dep" path="external/llama-generated-dep" remote="uwuAOSP" revision="5155bd223f73227063528a1c8f909bdde38442df" />
+  <project name="platform_external_ninja" path="external/ninja" remote="uwuAOSP" revision="61196610530313892c5669df5029826d44902496" />
+  <project name="platform_external_tesseract" path="external/tesseract" remote="uwuAOSP" revision="abad02eba83826a8b5f2ff9104d768bc7e7779d8" />
+  <project name="platform_frameworks_av" path="frameworks/av" remote="uwuAOSP" groups="pdk,sysui-studio" revision="cd47ebc197f0f7c108d3570cdfb8f5cd13837abd" />
+  <project name="platform_frameworks_base" path="frameworks/base" remote="uwuAOSP" groups="pdk-cw-fs,pdk-fs,sysui-studio" revision="54cdd6e64151c6a0927683c9c8bfb1cfe8f4006d" />
+  <project name="platform_frameworks_native" path="frameworks/native" remote="uwuAOSP" groups="pdk" revision="fd15460643d03cafceba0fe39ccb180a10a47430" />
+  <project name="platform_frameworks_opt_telephony" path="frameworks/opt/telephony" remote="uwuAOSP" groups="pdk,sysui-studio" revision="a2778f12cc3606c90dcca101e49e0ed66ef12b37" />
+  <project name="platform_packages_apps_CatShare" path="packages/apps/CatShare" remote="uwuAOSP" revision="3f0d259fe10258b8d56eaddb7132639ff90e8fc3" />
+  <project name="platform_packages_apps_ColumbusService" path="packages/apps/ColumbusService" remote="uwuAOSP" revision="29406f508a9d372bf3cce5bd0e075b2466e964ba" />
+  <project name="platform_packages_apps_Launcher3" path="packages/apps/Launcher3" remote="uwuAOSP" groups="pdk-cw-tvc,pdk-fs,sysui-studio" revision="2a264d2820705fb31682ebfb76ea85e6a6a19466" />
+  <project name="platform_packages_apps_LyricFetchExt" path="packages/apps/LyricFetchExt" remote="uwuAOSP" revision="70c7502d0b0101832e8986705fa14ccf2919d474" />
+  <project name="platform_packages_apps_Settings" path="packages/apps/Settings" remote="uwuAOSP" groups="pdk-cw-tvc,pdk-fs,sysui-studio" revision="3d99abd849a2a6539e645f6ff39a79c3ec27b157" />
+  <project name="platform_packages_apps_ThemePicker" path="packages/apps/ThemePicker" remote="uwuAOSP" groups="pdk-fs,sysui-studio" revision="54155e7b2199529c61b92a67fd748745fe4f6472" />
+  <project name="platform_packages_apps_uwuAICore" path="packages/apps/uwuAICore" remote="uwuAOSP" revision="a8469d9c5c0e3ec8d82e0f6675a853c853ae6845" />
+  <project name="platform_packages_apps_uwuClocks" path="packages/apps/uwuClocks" remote="uwuAOSP" revision="2343957f6710fa2d2bbcad355fd5ab26e9a9f35f" />
+  <project name="platform_packages_apps_uwuPrism" path="packages/apps/uwuPrism" remote="uwuAOSP" revision="b5dde7795807cc5ccedab47bf1b96961203e20f8" />
+  <project name="platform_packages_apps_uwuSettingsExt" path="packages/apps/uwuSettingsExt" remote="uwuAOSP" revision="b0c2dceb507774a4201a9c412f8ba90eeab7bacc" />
+  <project name="platform_packages_apps_uwuSystemUI" path="packages/apps/uwuSystemUI" remote="uwuAOSP" revision="7ccf57431a089889175138a05f443269ad07b7e0" />
+  <project name="platform_system_core" path="system/core" remote="uwuAOSP" groups="pdk" revision="5b139c16f3c1ca951bd7ca1b99feff72021e20d2" />
+  <project name="platform_system_security" path="system/security" remote="uwuAOSP" groups="pdk" revision="df3a1f1e6818de6ba3b63a1adef83715a7e8ab15" />
+  <project name="platform_system_sepolicy" path="system/sepolicy" remote="uwuAOSP" groups="pdk" revision="b41cbf3b46882139654574fe46ca5cf8175bf8a5" />
+  <project name="platform_uwu-sdk" path="uwu-sdk" remote="uwuAOSP" revision="7b8fd83fd672da5d55732ff73bb93cfd5baae161" />
+  <project name="platform_vendor_pixel_clocks" path="vendor/pixel/clocks" remote="uwuAOSP" revision="7896a5ef03ed7448089f4e00e02f056c8491048a" />
+  <project name="platform_vendor_pixel_themepicker" path="vendor/pixel/themepicker" remote="uwuAOSP" revision="169ac1a7520fbe28e90eadd6c6b2005a6dfa2f6d" />
+  <project name="platform_vendor_uwu" path="vendor/uwu" remote="uwuAOSP" revision="42921db3714e2f6773c0e680c38430846b3fb602" />
+  <project name="platform_vendor_uwu-prebuilts" path="vendor/uwu-prebuilts" remote="uwuAOSP" revision="d63a3df1c7a76f90d04a04519bb77abe1b9007f1" />
+  <project name="platform_vendor_uwu-translations" path="vendor/uwu-translations" remote="uwuAOSP" revision="405f5f340caac1a5ed97bfdad0294375cea33660" />
+  <project name="toolchain/pgo-profiles" groups="pdk" clone-depth="1" revision="refs/tags/android-17.0.0_r1" />
+  <project name="tools/platform-compat" groups="pdk,pdk-cw-fs,pdk-fs,sysui-studio" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/authmgr" path="trusty/user/app/authmgr" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/avb" path="trusty/user/app/avb" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/cast-auth" path="trusty/user/app/cast-auth" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/confirmationui" path="trusty/user/app/confirmationui" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/gatekeeper" path="trusty/user/app/gatekeeper" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/keymaster" path="trusty/user/app/keymaster" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/keymint" path="trusty/user/app/keymint" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/sample" path="trusty/user/app/sample" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/secretkeeper" path="trusty/user/app/secretkeeper" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/app/storage" path="trusty/user/app/storage" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/arm/generic-arm64" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/arm/vexpress-a15" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/common" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/desktop" groups="android-desktop,pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/nxp/imx7d" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/device/x86/generic-x86_64" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/external/headers" path="external/trusty/headers" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/external/musl" path="external/trusty/musl" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/external/trusted-firmware-a" path="external/trusty/arm-trusted-firmware" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/external/trusty" path="external/trusty/bootloader" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/host/common" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1">
+    <linkfile src="bazel/WORKSPACE.bazel" dest="trusty/WORKSPACE.bazel" />
+    <linkfile src="bazel/bazelrc" dest="trusty/.bazelrc" />
+  </project>
+  <project name="trusty/lib" path="trusty/user/base" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/lk/common" path="external/trusty/lk" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/lk/nxp" path="trusty/hardware/nxp" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/lk/trusty" path="trusty/kernel" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/user/desktop" groups="android-desktop,pdk,trusty" revision="refs/tags/android-17.0.0_r1" />
+  <project name="trusty/vendor/google/aosp" groups="pdk,trusty" revision="refs/tags/android-17.0.0_r1">
+    <copyfile src="lk_inc.mk" dest="lk_inc.mk" />
+  </project>
+  <project name="uwuCLI" remote="UwUniverse" revision="c4a54e47e9c8f05d1bb06ad71d99d84171a69b75" />
+  
+  <contactinfo bugurl="go/repo-bug" />
+</manifest>

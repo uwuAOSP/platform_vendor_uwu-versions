@@ -151,6 +151,34 @@ class ManifestTest(unittest.TestCase):
         self.assertEqual(projects[0].project.get("revision"), "refs/tags/android-17.0.0_r1")
         self.assertEqual(projects[1].project.get("revision"), "b" * 40)
 
+    @patch("tools.manifest_lib.sys.stdin.isatty", return_value=True)
+    @patch("tools.manifest_lib.input", create=True)
+    @patch("tools.manifest_lib.resolve_ref")
+    def test_resolution_failures_are_summarized_before_declining_retry(
+        self, resolve_ref_mock, input_mock, _isatty_mock
+    ) -> None:
+        tree = ET.ElementTree(
+            ET.fromstring(
+                """<manifest>
+                  <remote name="uwuAOSP" fetch="https://github.com/uwuAOSP" />
+                  <default remote="uwuAOSP" revision="refs/heads/uwu-17.0" />
+                  <project name="platform_vendor_test" />
+                </manifest>"""
+            )
+        )
+        projects = normalize_tree(
+            tree,
+            manifest_url="https://github.com/uwuAOSP/platform_manifests.git",
+            lineage_revision="refs/heads/lineage-24.0",
+        )
+        resolve_ref_mock.side_effect = RuntimeError("temporary failure")
+        input_mock.return_value = "n"
+        from tools.manifest_lib import resolve_projects
+
+        with self.assertRaisesRegex(RuntimeError, "1 SHA1 resolution"):
+            resolve_projects(projects, jobs=1)
+        self.assertEqual(input_mock.call_count, 1)
+
     def test_artifact_is_immutable(self) -> None:
         tree = ET.ElementTree(
             ET.fromstring(
