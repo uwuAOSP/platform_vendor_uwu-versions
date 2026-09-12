@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="aosp" fetch="https://android.googlesource.com" />
+  <remote name="uwuAOSP" fetch="https://github.com/uwuAOSP" />
+  <default remote="aosp" revision="refs/tags/android-17.0.0_r1" />
+  <project name="platform/frameworks/base" path="frameworks/base" />
+  <project name="platform_vendor_test" path="vendor/test"
+           remote="uwuAOSP"
+           revision="0123456789abcdef0123456789abcdef01234567" />
+</manifest>

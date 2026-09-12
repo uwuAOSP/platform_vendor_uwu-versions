@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="test" fetch="https://example.invalid/uwuAOSP" revision="refs/heads/development" />
+  <default remote="test" revision="refs/heads/development" />
+  <project name="platform_test" path="test/project"
+           revision="0123456789abcdef0123456789abcdef01234567" />
+</manifest>
