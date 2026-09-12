@@ -43,3 +43,7 @@ revision is `080`. The workflow initializes `platform_manifests` in a
 temporary directory, never runs `repo sync`, freezes the manifest with 32
 workers, creates archive refs for controlled repositories, updates `version.mk`
 to the requested revision, and commits the result.
+
+By default, archive refs are created only for projects using the `uwuAOSP`
+remote. Other organizations must be explicitly selected with
+`--controlled-remote` if they are also controlled by uwuAOSP.

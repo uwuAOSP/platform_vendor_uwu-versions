@@ -56,6 +56,7 @@ jobs:
             echo "UWU_RELEASE_TOKEN is required to create archive refs" >&2
             exit 1
           }
+          git config --local --unset-all http.https://github.com/.extraheader || true
           git config --global \
             url."https://x-access-token:${UWU_RELEASE_TOKEN}@github.com/".insteadOf \
             "https://github.com/"

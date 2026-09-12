@@ -90,7 +90,7 @@ def main() -> int:
         help="remote name allowed to receive archive refs; may be repeated",
     )
     args = parser.parse_args()
-    controlled_remotes = set(args.controlled_remotes or ("uwuAOSP", "UwUniverse"))
+    controlled_remotes = set(args.controlled_remotes or ("uwuAOSP",))
 
     if args.timeout < 1:
         parser.error("--timeout must be positive")
