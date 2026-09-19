@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import sys
+import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
@@ -19,6 +20,10 @@ if __package__ in (None, ""):
 else:
     from .manifest_lib import normalize_tree, parse_manifest
     from .version_lib import is_sha1, parse_version
+
+
+ARCHIVE_VERIFY_ATTEMPTS = 6
+ARCHIVE_VERIFY_INITIAL_DELAY = 1.0
 
 
 def _github_repository(repo_url: str) -> tuple[str, str]:
@@ -126,6 +131,32 @@ def _create_ref(
     )
 
 
+def _wait_for_ref(
+    owner: str,
+    repository: str,
+    ref: str,
+    *,
+    api_url: str,
+    token: str,
+    timeout: int,
+) -> str | None:
+    delay = ARCHIVE_VERIFY_INITIAL_DELAY
+    for attempt in range(ARCHIVE_VERIFY_ATTEMPTS):
+        existing = _existing_ref(
+            owner,
+            repository,
+            ref,
+            api_url=api_url,
+            token=token,
+            timeout=timeout,
+        )
+        if existing is not None or attempt == ARCHIVE_VERIFY_ATTEMPTS - 1:
+            return existing
+        time.sleep(delay)
+        delay *= 2
+    return None
+
+
 def _create_or_verify(
     repo_url: str,
     sha: str,
@@ -164,7 +195,7 @@ def _create_or_verify(
         )
     except RuntimeError as error:
         # A concurrent creator is safe if it installed the same SHA.
-        existing = _existing_ref(
+        existing = _wait_for_ref(
             owner,
             repository,
             ref,
@@ -176,7 +207,7 @@ def _create_or_verify(
             return "skip"
         raise error
 
-    existing = _existing_ref(
+    existing = _wait_for_ref(
         owner,
         repository,
         ref,
