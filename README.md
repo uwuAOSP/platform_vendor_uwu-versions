@@ -29,6 +29,8 @@ directory. It runs `repo init` and `repo manifest`, but never `repo sync`.
 tag revisions need to be materialized. Existing output files are immutable:
 the tools accept an identical retry and reject different content.
 
+`default.xml` includes the latest release manifest.
+
 AOSP projects (`remote="aosp"`) intentionally retain their effective tag or
 branch revision and are not SHA-resolved. All other remotes are SHA-pinned in
 the frozen manifest.
