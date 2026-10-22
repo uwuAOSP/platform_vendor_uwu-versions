@@ -43,8 +43,12 @@ Run the `Release Snapshot` workflow manually and enter a revision greater than
 the revision currently stored in `version.mk`, such as `081` when the current
 revision is `080`. The workflow initializes `platform_manifests` in a
 temporary directory, never runs `repo sync`, freezes the manifest with 32
-workers, creates archive refs for controlled repositories, updates `version.mk`
-to the requested revision, and commits the result.
+workers, creates archive refs for controlled repositories, and commits the
+release in two stages. It first pushes a version-state commit and waits five
+seconds so the new commit is visible to remote SHA resolution; the frozen
+manifest then pins this repository to that version-state commit. A second commit
+publishes the immutable manifest. If a run fails between these stages, rerun it
+with the same revision to resume.
 
 By default, archive refs are created only for projects using the `uwuAOSP`
 remote. Other organizations must be explicitly selected with

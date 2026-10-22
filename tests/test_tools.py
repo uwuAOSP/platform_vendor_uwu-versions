@@ -65,6 +65,25 @@ class VersionTest(unittest.TestCase):
             Version(current.major, current.qpr, future_revision).text,
         )
 
+    def test_version_cli_allows_current_revision_for_retry(self) -> None:
+        current = read_version_mk(Path("version.mk"))
+        result = subprocess.run(
+            [
+                sys.executable,
+                "tools/version_cli.py",
+                "--version-file",
+                "version.mk",
+                "--revision",
+                str(current.revision),
+                "--allow-current",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), current.text)
+
     def test_bump_cli_records_requested_revision(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "version.mk"
@@ -89,6 +108,31 @@ class VersionTest(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn("UWU_VERSION_REVISION := 81", path.read_text(encoding="utf-8"))
+
+    def test_bump_cli_is_idempotent_for_current_revision(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "version.mk"
+            original = (
+                "UWU_VERSION_MAJOR := 17\n"
+                "UWU_VERSION_QPR := 0\n"
+                "UWU_VERSION_REVISION := 81\n"
+            )
+            path.write_text(original, encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "tools/bump_version.py",
+                    "--version-file",
+                    str(path),
+                    "--released-revision",
+                    "081",
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(path.read_text(encoding="utf-8"), original)
 
 
 class ManifestTest(unittest.TestCase):

@@ -30,11 +30,15 @@ def main() -> int:
     try:
         version = read_version_mk(args.version_file)
         released = parse_revision(args.released_revision)
-        if released <= version.revision:
+        if released < version.revision:
             raise ValueError(
-                f"released revision {released} must be greater than "
+                f"released revision {released} must not be less than "
                 f"{args.version_file}: {version.revision} ({version.text})"
             )
+
+        if released == version.revision:
+            print(f"bump_version.py: version.mk is already {version.text}")
+            return 0
 
         original = args.version_file.read_text(encoding="utf-8")
         updated, replacements = _REVISION_LINE.subn(

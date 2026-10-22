@@ -18,12 +18,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version-file", type=Path, default=Path("version.mk"))
     parser.add_argument("--revision", required=True)
+    parser.add_argument(
+        "--allow-current",
+        action="store_true",
+        help="allow the requested revision to equal the stored revision (for retries)",
+    )
     args = parser.parse_args()
 
     try:
         version = read_version_mk(args.version_file)
         revision = parse_revision(args.revision)
-        if revision <= version.revision:
+        if revision < version.revision or (
+            revision == version.revision and not args.allow_current
+        ):
             raise ValueError(
                 f"requested revision {revision} must be greater than "
                 f"{args.version_file}: {version.revision} ({version.text})"

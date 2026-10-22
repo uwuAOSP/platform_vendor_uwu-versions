@@ -41,6 +41,7 @@ jobs:
         run: |
           VERSION="$(python3 tools/version_cli.py \
             --version-file version.mk \
+            --allow-current \
             --revision "$REQUESTED_REVISION")"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "release version: $VERSION"
@@ -61,6 +62,24 @@ jobs:
             url."https://x-access-token:${UWU_RELEASE_TOKEN}@github.com/".insteadOf \
             "https://github.com/"
 
+      - name: Publish release version state
+        env:
+          REQUESTED_REVISION: ${{ inputs.revision }}
+          VERSION: ${{ steps.version.outputs.version }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          python3 tools/bump_version.py \
+            --version-file version.mk \
+            --released-revision "$REQUESTED_REVISION"
+          git config user.name "uwuAOSP Release Bot"
+          git config user.email "release-bot@uwuaosp.dev"
+          git add version.mk
+          if ! git diff --cached --quiet; then
+            git commit -m "version: Prepare release ${VERSION}"
+          fi
+          git push origin "HEAD:${BRANCH}"
+          sleep 5
+
       - name: Freeze development manifest
         env:
           REQUESTED_REVISION: ${{ inputs.revision }}
@@ -68,6 +87,7 @@ jobs:
         run: |
           python3 tools/freeze_manifest.py \
             --revision "$REQUESTED_REVISION" \
+            --allow-current \
             --version-file version.mk \
             --manifest-url "$MANIFEST_URL" \
             --manifest-branch "$MANIFEST_BRANCH" \
@@ -93,14 +113,6 @@ jobs:
           path: manifest/${{ steps.version.outputs.version }}.xml
           if-no-files-found: error
 
-      - name: Advance version for next release
-        env:
-          REQUESTED_REVISION: ${{ inputs.revision }}
-        run: |
-          python3 tools/bump_version.py \
-            --version-file version.mk \
-            --released-revision "$REQUESTED_REVISION"
-
       - name: Commit and publish release snapshot
         env:
           VERSION: ${{ steps.version.outputs.version }}
@@ -108,10 +120,10 @@ jobs:
         run: |
           git config user.name "uwuAOSP Release Bot"
           git config user.email "release-bot@uwuaosp.dev"
-          git add "manifest/${VERSION}.xml" version.mk
+          git add "manifest/${VERSION}.xml"
           if git diff --cached --quiet; then
             echo "release ${VERSION} is already committed"
             exit 0
           fi
-          git commit -m "version: Bump to ${VERSION}"
+          git commit -m "version: Publish release ${VERSION}"
           git push origin "HEAD:${BRANCH}"
