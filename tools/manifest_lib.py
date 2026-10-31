@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 import xml.etree.ElementTree as ET
 
-from .version_lib import candidate_refs, is_sha1, repository_url
+from .version_lib import branch_ref, candidate_refs, is_sha1, repository_url
 
 
 SHA_EXEMPT_REMOTES = frozenset({"aosp"})
@@ -230,8 +230,24 @@ def _ask_retry() -> bool:
 
 
 def make_frozen(tree: ET.ElementTree, projects: list[ProjectRevision]) -> None:
-    """Remove inherited floating revisions after every project is explicit."""
+    """Pin projects while retaining branch refs for tools such as repopick."""
     root = tree.getroot()
+
+    for project in projects:
+        if project.remote in SHA_EXEMPT_REMOTES:
+            continue
+
+        upstream = project.project.get("upstream")
+        if upstream is None:
+            revision = project.revision
+            if revision.startswith("refs/heads/"):
+                upstream = revision
+            elif not revision.startswith("refs/") and not is_sha1(revision):
+                upstream = branch_ref(revision)
+
+        if upstream is not None:
+            project.project.set("upstream", upstream)
+
     default = root.find("default")
     if default is not None:
         default.attrib.pop("revision", None)

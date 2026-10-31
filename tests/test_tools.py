@@ -240,9 +240,39 @@ class ManifestTest(unittest.TestCase):
         from tools.manifest_lib import resolve_projects
 
         resolve_projects(projects, jobs=1)
+        make_frozen(tree, projects)
         self.assertEqual(resolve_ref_mock.call_count, 1)
         self.assertEqual(projects[0].project.get("revision"), "refs/tags/android-17.0.0_r1")
         self.assertEqual(projects[1].project.get("revision"), "b" * 40)
+        self.assertIsNone(projects[0].project.get("upstream"))
+        self.assertEqual(
+            projects[1].project.get("upstream"), "refs/heads/uwu-17.0"
+        )
+
+    @patch("tools.manifest_lib.resolve_ref")
+    def test_frozen_tree_keeps_explicit_tag_out_of_upstream(self, resolve_ref_mock) -> None:
+        tree = ET.ElementTree(
+            ET.fromstring(
+                """<manifest>
+                  <remote name="uwuAOSP" fetch="https://github.com/uwuAOSP" />
+                  <project name="platform_vendor_test" remote="uwuAOSP"
+                           revision="refs/tags/v1" />
+                </manifest>"""
+            )
+        )
+        projects = normalize_tree(
+            tree,
+            manifest_url="https://github.com/uwuAOSP/platform_manifests.git",
+            lineage_revision="refs/heads/lineage-24.0",
+        )
+        resolve_ref_mock.return_value = "c" * 40
+        from tools.manifest_lib import resolve_projects
+
+        resolve_projects(projects, jobs=1)
+        make_frozen(tree, projects)
+        project = tree.getroot().find("project")
+        self.assertEqual(project.get("revision"), "c" * 40)
+        self.assertIsNone(project.get("upstream"))
 
     @patch("tools.manifest_lib.sys.stdin.isatty", return_value=True)
     @patch("tools.manifest_lib.input", create=True)
